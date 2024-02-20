@@ -19,7 +19,7 @@ var companies = [
         founding: new Date(2023, 04, 04, 09, 30, 00),
         founder: "Johnathan Rustler",
         value: "25 b"
-    },
+    }
 ];
 
 var characters = [
@@ -42,7 +42,7 @@ var characters = [
         playedby: "Banana"
     },
     {
-        fullname: "Mitchel Allen Grayer"
+        fullname: "Mitchel Allen Grayer",
         birthday: new Date(1995, 00, 05, 12, 33, 02),
         employment: "Criminal",
         gender: "Male",
@@ -54,7 +54,7 @@ var characters = [
         fullname: "Isabel Ann Jackson",
         birthday: new Date(1995, 04, 16, 09, 11, 69),
         employment: companies[0],
-        gender: "Male",
+        gender: "Female",
         networth: "1 b",
         game: "GTA",
         playedby: "Jules"
@@ -130,5 +130,5 @@ var characters = [
         networth: "20",
         game: "GTA",
         playedby: "Banana"
-    },
+    }
 ];
