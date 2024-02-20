@@ -1,4 +1,4 @@
-// Version 1.0.0 - Tru3
+// Version 1.0.1 - Tru3
 
 // Break Apart Name Data
 function nameDecrypt(rawName) {
@@ -7,8 +7,11 @@ function nameDecrypt(rawName) {
     const firstName = nameParts[0];
     
     const lastName = nameParts[nameParts.length - 1];
-    
-    const middleName = nameParts.length > 2 ? nameParts.slice(1, -1).join(" ") : null;
+
+    let middleName = null;
+    if (nameParts.length > 2) {
+        middleName = nameParts.slice(1, -1).join(" ");
+    }
     
     const nameObject = {
         first: firstName,
