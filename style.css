@@ -40,8 +40,8 @@
 }
 
 .extra {
-  text-decoration: none;
-  color: #33a3d4;
+  text-decoration: underline;
+  color: white;
   text-shadow: 1px 1px black;
   background-color: rgba(0, 0, 0, 0.8);
 }
