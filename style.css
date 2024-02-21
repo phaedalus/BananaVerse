@@ -38,3 +38,10 @@
   transition: max-height 0.2s ease-out;
   background-color: #f1f1f1;
 }
+
+.extra {
+  text-decoration: none;
+  color: #33a3d4;
+  text-shadow: 1px 1px black;
+  background-color: rgba(0, 0, 0, 0.8);
+}

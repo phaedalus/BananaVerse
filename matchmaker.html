@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="./lovearcade.png">
+        <title>Love Arcade</title>
+        <style>
+            @font-face {
+              font-family: pricedown;
+              src: url("./font/pricedow.otf");
+            }
+
+            body {
+                user-select: none;
+                font-family: Arial, sans-serif;
+                background-color: #1f1f1f;
+                color: #fff;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                flex-direction: column;
+            }
+
+            .container {
+                background-color: #333;
+                border-radius: 10px;
+                padding: 20px;
+                text-align: center;
+                max-width: 400px;
+                width: 100%;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            h1 {
+                font-family: pricedown;
+                margin-top: 0;
+                color: #ff6666;
+                text-shadow: 1px 1px black;
+            }
+
+            button {
+                font-weight: bold;
+                text-shadow: 1px 1px black;
+                background-color: #ff6666;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 5px;
+                margin-top: 20px;
+                transition: background-color 0.3s;
+            }
+
+            button:hover {
+                background-color: #b53e3e;
+            }
+
+            .characters {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+            }
+
+            .character {
+                background-color: #444;
+                border-radius: 5px;
+                padding: 10px;
+                flex: 1;
+                margin: 0 10px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .character p {
+                text-shadow: 1px 1px black;
+                font-size: 36px;
+                color: #ff4d4d;
+                font-family: pricedown;
+            }
+
+            .compatibility {
+                margin-top: 20px;
+                font-size: 18px;
+                color: #ff6666;
+                text-shadow: 1px 1px black;
+            }
+        </style>
+        <script src="data.js" defer></script>
+        <script>
+            function generateRandomCharacter() {
+                var character1Index = Math.floor(Math.random() * characters.length);
+                var character2Index = Math.floor(Math.random() * characters.length);
+
+                // Ensure characters are different
+                while (character1Index === character2Index) {
+                    character2Index = Math.floor(Math.random() * characters.length);
+                }
+
+                // Extract first names only
+                var character1 = characters[character1Index].fullname.split(' ')[0];
+                var character2 = characters[character2Index].fullname.split(' ')[0];
+
+                return [character1, character2];
+            }
+
+            function generateCompatibility() {
+                var characters = generateRandomCharacter();
+                var character1 = characters[0];
+                var character2 = characters[1];
+
+                document.getElementById("character1").innerText = character1;
+                document.getElementById("character2").innerText = character2;
+
+                // Just a dummy compatibility calculation
+                var compatibility = Math.random() * 100; // Random compatibility between 0 and 100
+                document.getElementById("compatibility").innerText = "Compatibility: " + compatibility.toFixed(2) + "%";
+            }
+
+            // Generate compatibility on page load
+            window.onload = generateCompatibility;
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Love Arcade</h1>
+            <button onclick="generateCompatibility()">Run It Back!</button>
+            <div class="characters">
+                <div class="character">
+                    <p><span id="character1"></span></p>
+                </div>
+                <div class="character">
+                    <p><span id="character2"></span></p>
+                </div>
+            </div>
+            <p class="compatibility" id="compatibility"></p>
+            <a class="compatibility" href="./index.html">Back</a>
+        </div>
+    </body>
+</html>
