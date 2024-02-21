@@ -33,7 +33,7 @@ var characters = [
         playedby: "Tru3"
     },
     {
-        fullname: "Tyler Michael Deveraux",
+        fullname: "Tyler Michael Devereaux",
         birthday: new Date(1990, 07, 09, 12, 00, 00),
         employment: companies[1],
         gender: "Male",
