@@ -78,7 +78,7 @@ var characters = [
         playedby: "Faze"
     },
     {
-        fullname: "Chloe Emma Monroe",
+        fullname: "Khloe Emma Monroe",
         birthday: new Date(2000, 08, 09, 01, 17, 00),
         employment: "Personal Assistant",
         gender: "Female",
