@@ -30,7 +30,9 @@ var characters = [
         gender: "Male",
         networth: "985 m",
         game: "GTA",
-        playedby: "Tru3"
+        playedby: "Tru3",
+        weight: "165",
+        height: "6'5"
     },
     {
         fullname: "Tyler Michael Devereaux",
@@ -39,7 +41,9 @@ var characters = [
         gender: "Male",
         networth: "1 b",
         game: "GTA",
-        playedby: "Banana"
+        playedby: "Banana",
+        weight: "200",
+        height: "6'2"
     },
     {
         fullname: "Mitchel Allen Grayer",
@@ -48,7 +52,9 @@ var characters = [
         gender: "Male",
         networth: "80 m",
         game: "GTA",
-        playedby: "Jules"
+        playedby: "Jules",
+        weight: "210",
+        height: "6'4"
     },
     {
         fullname: "Isabel Ann Jackson",
@@ -57,7 +63,9 @@ var characters = [
         gender: "Female",
         networth: "1 b",
         game: "GTA",
-        playedby: "Jules"
+        playedby: "Jules",
+        weight: "134",
+        height: "5'6"
     },
     {
         fullname: "Michael Christopher Hall",
@@ -66,7 +74,9 @@ var characters = [
         gender: "Male",
         networth: "8.6 b",
         game: "GTA",
-        playedby: "Banana"
+        playedby: "Banana",
+        weight: "220",
+        height: "6'3"
     },
     {
         fullname: "Johnathan Rustler",
@@ -75,7 +85,9 @@ var characters = [
         gender: "Male",
         networth: "120 b",
         game: "GTA",
-        playedby: "Faze"
+        playedby: "Faze",
+        weight: "190",
+        height: "6'1"
     },
     {
         fullname: "Khloe Emma Monroe",
@@ -84,7 +96,9 @@ var characters = [
         gender: "Female",
         networth: "4 m",
         game: "GTA",
-        playedby: "Faze"
+        playedby: "Faze",
+        weight: "127",
+        height: "5'5"
     },
     {
         fullname: "Colton Kenneth Black",
@@ -102,7 +116,9 @@ var characters = [
         gender: "Male",
         networth: "82.5 k",
         game: "GTA",
-        playedby: "Rob"
+        playedby: "Rob",
+        weight: "150",
+        height: "5'10"
     },
     {
         fullname: "Sarah Lynn Moore",
@@ -111,7 +127,9 @@ var characters = [
         gender: "Female",
         networth: "20 m",
         game: "GTA",
-        playedby: "Rob"
+        playedby: "Rob",
+        weight: "100",
+        height: "5'0"
     },
     {
         fullname: "Zhyxhio James Black",
@@ -129,6 +147,19 @@ var characters = [
         gender: "Male",
         networth: "20",
         game: "GTA",
-        playedby: "Banana"
+        playedby: "Banana",
+        weight: "165",
+        height: "5'11"
+    },
+    {
+        fullname: "North Marie Bradshaw",
+        birthday: new Date(1998, 04, 25, 22, 15, 00),
+        employment: "Model",
+        gender: "Female",
+        networth: "400 k",
+        game: "GTA",
+        playedby: "Goose",
+        weight: "125",
+        height: "5'6"
     }
 ];

@@ -115,9 +115,24 @@
                 document.getElementById("character1").innerText = character1;
                 document.getElementById("character2").innerText = character2;
 
-                // Just a dummy compatibility calculation
                 var compatibility = Math.random() * 100; // Random compatibility between 0 and 100
-                document.getElementById("compatibility").innerText = "Compatibility: " + compatibility.toFixed(2) + "%";
+
+                // Determine the word based on the compatibility percentage
+                var word = '';
+                if (compatibility < 20) {
+                    word = 'Incompatible';
+                } else if (compatibility < 40) {
+                    word = 'Lukewarm';
+                } else if (compatibility < 60) {
+                    word = 'Fair';
+                } else if (compatibility < 80) {
+                    word = 'Strong';
+                } else {
+                    word = 'Fiery';
+                }
+
+                document.getElementById("compatibility").innerText = "Compatibility: " + word;
+                document.getElementById("percent").innerText = compatibility.toFixed(1) + "%";
             }
 
             // Generate compatibility on page load
@@ -137,6 +152,7 @@
                 </div>
             </div>
             <p class="compatibility" id="compatibility"></p>
+            <p class="compatibility" id="percent"></p>
             <a class="compatibility" href="./index.html">Back</a>
         </div>
     </body>
