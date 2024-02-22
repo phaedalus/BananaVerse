@@ -269,3 +269,19 @@ function addToHomeScreen() {
 
 // Call the function when the page loads
 window.addEventListener('load', addToHomeScreen);
+
+function isAndroid() {
+    return /Android/i.test(navigator.userAgent);
+}
+
+function addToHomeScreen() {
+    const isAndroidOS = isAndroid();
+    
+    if (isAndroidOS) {
+        // Prompt the user to add to home screen
+        alert("To add this web app to your home screen, tap the menu button and then select 'Add to Home Screen' or 'Install App'.");
+    }
+}
+
+// Call the function when the page loads
+window.addEventListener('load', addToHomeScreen);
