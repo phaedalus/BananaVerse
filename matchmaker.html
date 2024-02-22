@@ -142,32 +142,24 @@
                 return /iPhone|iPad|iPod/i.test(navigator.userAgent);
             }
 
-            function isStandalone() {
-                return window.navigator.standalone;
-            }
-
-            function addToHomeScreen() {
-                const isiOS = isIOS();
-                const isStandalone = isStandalone();
-                
-                if (isiOS && !isStandalone) {
-                    // Prompt the user to add to home screen
-                    alert("To add this web app to your home screen, tap the share button below and then select 'Add to Home Screen'.");
-                }
-            }
-
-            // Call the function when the page loads
-            window.addEventListener('load', addToHomeScreen);
-
             function isAndroid() {
                 return /Android/i.test(navigator.userAgent);
             }
 
+            function isSnapchat() {
+                return /Snapchat/i.test(navigator.userAgent);
+            }
+
             function addToHomeScreen() {
+                const isiOS = isIOS();
                 const isAndroidOS = isAndroid();
+                const isSnapchatBrowser = isSnapchat();
                 
-                if (isAndroidOS) {
-                    // Prompt the user to add to home screen
+                if (isiOS && !window.navigator.standalone) {
+                    // Prompt the user to add to home screen for iOS
+                    alert("To add this web app to your home screen, tap the share button below and then select 'Add to Home Screen'.");
+                } else if (isAndroidOS || isSnapchatBrowser) {
+                    // Prompt the user to add to home screen for Android or Snapchat
                     alert("To add this web app to your home screen, tap the menu button and then select 'Add to Home Screen' or 'Install App'.");
                 }
             }
