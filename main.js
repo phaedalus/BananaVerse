@@ -248,3 +248,24 @@ function getFormattedDate() {
 }
 
 document.getElementById("news-date").innerText = getFormattedDate();
+
+function isIOS() {
+    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+function isStandalone() {
+    return window.navigator.standalone;
+}
+
+function addToHomeScreen() {
+    const isiOS = isIOS();
+    const isStandalone = isStandalone();
+    
+    if (isiOS && !isStandalone) {
+        // Prompt the user to add to home screen
+        alert("To add this web app to your home screen, tap the share button below and then select 'Add to Home Screen'.");
+    }
+}
+
+// Call the function when the page loads
+window.addEventListener('load', addToHomeScreen);
