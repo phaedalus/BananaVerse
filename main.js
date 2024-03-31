@@ -1,4 +1,4 @@
-// Version 1.0.1 - Tru3
+// Version 1.0.3 - Tru3
 
 // Break Apart Name Data
 function nameDecrypt(rawName) {
@@ -202,16 +202,32 @@ for (i = 0; i < coll.length; i++) {
 
 document.addEventListener("DOMContentLoaded", function() {
     const gtaList = document.getElementById("characters-gta");
-    const sortedCharacters = characters.map(loadCharacter).sort((a, b) => {
+    const grbList = document.getElementById("characters-grb");
+
+    // Load GTA characters on page load
+    const sortedCharactersGTA = characters.filter(character => character.game === "GTA").map(loadCharacter).sort((a, b) => {
         const nameA = `${a.name.firstName} ${a.name.lastName}`;
         const nameB = `${b.name.firstName} ${b.name.lastName}`;
         return nameA.localeCompare(nameB);
     });
-    
-    sortedCharacters.forEach(function(character) {
+
+    sortedCharactersGTA.forEach(function(character) {
         const li = document.createElement("li");
         li.innerText = `${character.name.firstName} ${character.name.lastName}`;
         gtaList.appendChild(li);
+    });
+
+    // Load GRB characters on page load
+    const sortedCharactersGRB = characters.filter(character => character.game === "GRB").map(loadCharacter).sort((a, b) => {
+        const nameA = `${a.name.firstName} ${a.name.lastName}`;
+        const nameB = `${b.name.firstName} ${b.name.lastName}`;
+        return nameA.localeCompare(nameB);
+    });
+
+    sortedCharactersGRB.forEach(function(character) {
+        const li = document.createElement("li");
+        li.innerText = `${character.name.firstName} ${character.name.lastName}`;
+        grbList.appendChild(li);
     });
 });
 
@@ -246,34 +262,3 @@ function getFormattedDate() {
 
   return `${dayOfWeek}, ${month} ${day}${suffix}, ${year}`;
 }
-
-document.getElementById("news-date").innerText = getFormattedDate();
-
-function isIOS() {
-    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-}
-
-function isAndroid() {
-    return /Android/i.test(navigator.userAgent);
-}
-
-function isSnapchat() {
-    return /Snapchat/i.test(navigator.userAgent);
-}
-
-function addToHomeScreen() {
-    const isiOS = isIOS();
-    const isAndroidOS = isAndroid();
-    const isSnapchatBrowser = isSnapchat();
-    
-    if (isiOS && !window.navigator.standalone) {
-        // Prompt the user to add to home screen for iOS
-        alert("To add this web app to your home screen, tap the share button below and then select 'Add to Home Screen'.");
-    } else if (isAndroidOS || isSnapchatBrowser) {
-        // Prompt the user to add to home screen for Android or Snapchat
-        alert("To add this web app to your home screen, tap the menu button and then select 'Add to Home Screen' or 'Install App'.");
-    }
-}
-
-// Call the function when the page loads
-window.addEventListener('load', addToHomeScreen);

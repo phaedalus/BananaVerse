@@ -19,6 +19,13 @@ var companies = [
         founding: new Date(2023, 04, 04, 09, 30, 00),
         founder: "Johnathan Rustler",
         value: "25 b"
+    },
+    {
+        name: "Ride Free Motorcycle Services",
+        type: "Bike Mods",
+        founding: new Date(1964, 08, 07, 12, 00, 00),
+        founder: "Merle Dixon",
+        value: "1.8 m"
     }
 ];
 
@@ -161,5 +168,60 @@ var characters = [
         playedby: "Goose",
         weight: "125",
         height: "5'6"
+    },
+    {
+        fullname: "Alexander Milkovic",
+        birthday: new Date(2002, 06, 07, 12, 00, 00),
+        employment: companies[3],
+        gender: "Male",
+        networth: "92 k",
+        game: "GTA",
+        playedby: "Spanning",
+        weight: "193",
+        height: "6'0"
+    },
+    {
+        fullname: "Leo Stone Valdez",
+        birthday: new Date(1997, 07, 13, 12, 00, 00),
+        employment: "U.S. Military",
+        gender: "Male",
+        networth: "400 k",
+        game: "GRB",
+        playedby: "Tru3",
+        weight: "200",
+        height: "6'1"
+    },
+    {
+        fullname: "Mark Devereaux",
+        birthday: new Date(1990, 07, 09, 12, 00, 00),
+        employment: "Private Contracter",
+        gender: "Male",
+        networth: "3 m",
+        game: "GRB",
+        playedby: "Banana",
+        weight: "200",
+        height: "6'2"
+    },
+    {
+        fullname: "Grant Alexander Hilbert",
+        birthday: new Date(1997, 06, 13, 12, 00, 00),
+        employment: "U.S. Military",
+        gender: "Male",
+        networth: "2.5 m",
+        game: "GRB",
+        playedby: "Jules",
+        weight: "210",
+        height: "6'0"
+    },
+    {
+        fullname: "Elana May Smith",
+        birthday: new Date(2000, 04, 14, 12, 00, 00),
+        employment: "Private Contracter",
+        gender: "Female",
+        networth: "1.5 m",
+        game: "GRB",
+        playedby: "Jules",
+        weight: "168",
+        height: "5'9"
     }
 ];
