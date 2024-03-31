@@ -223,5 +223,16 @@ var characters = [
         playedby: "Jules",
         weight: "168",
         height: "5'9"
+    },
+    {
+        fullname: "Richard Thomas Rustler",
+        birthday: new Date(1980, 01, 05, 12, 05, 00),
+        employment: "U.S. Military",
+        gender: "Male",
+        networth: "1.3 m",
+        game: "GRB",
+        playedby: "Faze",
+        weight: "200",
+        height: "5'10"
     }
 ];
