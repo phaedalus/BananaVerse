@@ -15,3 +15,4 @@ window.onload = function() {
     const background = pickRando(options);
     document.body.style.background = `url(${background}) no-repeat center/cover`;
 }
+

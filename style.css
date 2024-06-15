@@ -51,34 +51,18 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-#newspaper {
+.character-profile {
+  display: none;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: max-content;
+  height: 25%;
+  padding: 25px;
+  background-color: white;
+  border: 2px solid #000;
   text-align: center;
   user-select: none;
-  width: 40vw;
-  height: 80vh;
-  background-color: white;
-  border: 1px solid black;
-  text-shadow: 1.7px 1.7px #363433;
-}
-
-#newspaper h1 {
-  font-family: diploma;
-}
-
-#newspaper #news-date {
-  color: black;
-  text-shadow: none;
-  font-family: fantasy;
-  margin-left: 10px;
-}
-
-#newspaper #news-state {
-  color: black;
-  text-shadow: none;
-  font-family: fantasy;
-  margin-right: 10px;
+  height: max-content;
 }

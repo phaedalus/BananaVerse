@@ -170,16 +170,21 @@ function loadCharacter(character) {
         name: {
             firstName: nameDecrypt(character.fullname).first,
             middleName: nameDecrypt(character.fullname).middle,
-            lastName: nameDecrypt(character.fullname).last
+            lastName: nameDecrypt(character.fullname).last,
+            fullName: character.fullname
         },
         birthday: {
             paperNormal: formattedDate,
-            paperSpecific: unformattedDate
+            paperSpecific: unformattedDate,
+            raw: character.birthday
         },
         gender: character.gender,
         employment: job,
         networth: netWorthHandle(character.networth),
-        playedby: character.playedby
+        playedby: character.playedby,
+        weight: character.weight,
+        height: character.height,
+        game: character.game
     };
 
     return structure;
@@ -214,6 +219,9 @@ document.addEventListener("DOMContentLoaded", function() {
     sortedCharactersGTA.forEach(function(character) {
         const li = document.createElement("li");
         li.innerText = `${character.name.firstName} ${character.name.lastName}`;
+        li.onclick = function() {
+            profileLoading(character);
+        };
         gtaList.appendChild(li);
     });
 
@@ -227,6 +235,9 @@ document.addEventListener("DOMContentLoaded", function() {
     sortedCharactersGRB.forEach(function(character) {
         const li = document.createElement("li");
         li.innerText = `${character.name.firstName} ${character.name.lastName}`;
+        li.onclick = function() {
+            profileLoading(character);
+        };
         grbList.appendChild(li);
     });
 });
@@ -262,3 +273,38 @@ function getFormattedDate() {
 
   return `${dayOfWeek}, ${month} ${day}${suffix}, ${year}`;
 }
+
+function calculateAge(birthday) {
+  const today = new Date();
+  let age = today.getFullYear() - birthday.getFullYear();
+  const monthDifference = today.getMonth() - birthday.getMonth();
+
+  // If birth date has not yet occurred this year, subtract one from age
+  if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthday.getDate())) {
+    age--;
+  }
+
+  return age;
+}
+
+function profileLoading(character) {
+    document.getElementById("character-profile").style.display = "block";
+    document.getElementById("character-name").innerText = character.name.fullName;
+    document.getElementById("character-age").innerText = calculateAge(character.birthday.raw);
+    document.getElementById("character-gender").innerText = character.gender;
+    document.getElementById("character-birthday").innerText = character.birthday.paperNormal;
+    if (typeof character.employment === 'object' && character.employment !== null) {
+        document.getElementById("character-employment").innerText = character.employment.name; 
+    } else {
+        document.getElementById("character-employment").innerText = character.employment;
+    }
+    document.getElementById("character-net-worth").innerText = character.networth;
+    document.getElementById("character-game").innerText = character.game;
+    document.getElementById("character-height").innerText = character.height;
+    document.getElementById("character-weight").innerText = character.weight;
+    document.getElementById("character-played-by").innerText = character.playedby;
+}
+
+document.getElementById("character-profile").addEventListener('click', () => {
+    document.getElementById("character-profile").style.display = "none";
+});
