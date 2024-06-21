@@ -26,6 +26,13 @@ var companies = [
         founding: new Date(1964, 08, 07, 12, 00, 00),
         founder: "Merle Dixon",
         value: "1.8 m"
+    },
+    {
+        name: "Tobacco Comapany Placeholder",
+        type: "Tobacco Company",
+        founding: new Date(1724, 08, 07, 12, 00, 00),
+        founder: "Placeholder",
+        value: "900 m"
     }
 ];
 
@@ -38,8 +45,8 @@ var characters = [
         networth: "985 m",
         game: "GTA",
         playedby: "Tru3",
-        weight: "165",
-        height: "6'5"
+        weight: "185",
+        height: "6'4"
     },
     {
         fullname: "Tyler Michael Devereaux",
@@ -54,7 +61,7 @@ var characters = [
     },
     {
         fullname: "Mitchel Allen Grayer",
-        birthday: new Date(1995, 00, 05, 12, 33, 02),
+        birthday: new Date(1995, 00, 08, 12, 33, 02),
         employment: "Criminal",
         gender: "Male",
         networth: "80 m",
@@ -114,14 +121,16 @@ var characters = [
         gender: "Male",
         networth: "245 b",
         game: "GTA",
-        playedby: "Colt"
+        playedby: "Colt",
+        weight: "220",
+        height: "6'3"
     },
     {
         fullname: "Robert Ronald Kennedy",
         birthday: new Date(1988, 08, 08, 09, 11, 69),
-        employment: "Unemployed",
+        employment: companies[2],
         gender: "Male",
-        networth: "82.5 k",
+        networth: "1.1 m",
         game: "GTA",
         playedby: "Rob",
         weight: "150",
@@ -132,7 +141,7 @@ var characters = [
         birthday: new Date(1992, 06, 04, 08, 00, 00),
         employment: "Mechanic",
         gender: "Female",
-        networth: "20 m",
+        networth: "200 m",
         game: "GTA",
         playedby: "Rob",
         weight: "100",
@@ -149,10 +158,10 @@ var characters = [
     },
     {
         fullname: "Nathan Kingston",
-        birthday: new Date(1997, 00, 25, 12, 00, 00),
-        employment: "Fast Food Worker",
+        birthday: new Date(1997, 00, 22, 12, 00, 00),
+        employment: companies[4],
         gender: "Male",
-        networth: "20",
+        networth: "900 m",
         game: "GTA",
         playedby: "Banana",
         weight: "165",
@@ -168,17 +177,6 @@ var characters = [
         playedby: "Goose",
         weight: "125",
         height: "5'6"
-    },
-    {
-        fullname: "Alexander Milkovic",
-        birthday: new Date(2002, 06, 07, 12, 00, 00),
-        employment: companies[3],
-        gender: "Male",
-        networth: "92 k",
-        game: "GTA",
-        playedby: "Spanning",
-        weight: "193",
-        height: "6'0"
     },
     {
         fullname: "Leo Stone Valdez",
@@ -234,5 +232,27 @@ var characters = [
         playedby: "Faze",
         weight: "200",
         height: "5'10"
+    },
+    {
+        fullname: "Johnathan Molina Blackwood",
+        birthday: new Date(1995, 03, 23, 12, 00, 00),
+        employment: "Franchisee",
+        gender: "Male",
+        networth: "200 m",
+        game: "GTA",
+        playedby: "Landy",
+        weight: "210",
+        height: "6'4"
+    },
+    {
+        fullname: "Victor D'Angelo",
+        birthday: new Date(1962, 01, 09, 12, 00, 00),
+        employment: "Retired",
+        gender: "Male",
+        networth: "100 m",
+        game: "GTA",
+        playedby: "Banana",
+        weight: "215",
+        height: "6'2"
     }
 ];

@@ -1,11 +1,74 @@
-// Version 1.0.3 - Tru3
+// Version 1.0.3_betareleasefix_1.0 - Tru3
+
+// UI Code
+document.addEventListener('click', function(event) {
+    const navItems = document.querySelectorAll('.nav-item');
+    let clickedInsideNavItem = false;
+
+    navItems.forEach(item => {
+        if (item.contains(event.target)) {
+            clickedInsideNavItem = true;
+            if (!item.classList.contains('active')) {
+                closeAllSubMenus();
+                item.classList.add('active');
+            }
+        }
+    });
+
+    if (!clickedInsideNavItem) {
+        closeAllSubMenus();
+    }
+});
+
+function toggleMenu(element) {
+    element.classList.toggle('active');
+}
+
+function closeAllSubMenus() {
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        item.classList.remove('active');
+    });
+}
+
+function selectSubItem(event) {
+    event.stopPropagation();
+    closeAllSubMenus();
+}
+
+function gta_characters() {
+    selectSubItem(event);
+    var gta_char = document.createElement("ul");
+    clone(gta_char, "characters-gta");
+    var feed = document.getElementById("feed");
+    feed.innerHTML = '';
+    feed.appendChild(gta_char);
+}
+
+function grb_characters() {
+    selectSubItem(event);
+    var grb_char = document.createElement("ul");
+    clone(grb_char, "characters-grb");
+    var feed = document.getElementById("feed");
+    feed.innerHTML = '';
+    feed.appendChild(grb_char);
+}
+
+function lovearcade() {
+    selectSubItem(event);
+    location.href = `./matchmaker.html`;
+}
+
+function namegeneration() {
+    selectSubItem(event);
+    location.href = "./names.html";
+}
 
 // Break Apart Name Data
 function nameDecrypt(rawName) {
     const nameParts = rawName.split(" ");
     
     const firstName = nameParts[0];
-    
     const lastName = nameParts[nameParts.length - 1];
 
     let middleName = null;
@@ -20,7 +83,7 @@ function nameDecrypt(rawName) {
     };
     
     return nameObject;
-};
+}
 
 // Proccess Date Request
 function processDate(rawDate, components, useWords = false) {
@@ -66,7 +129,6 @@ function dateDecrypt(rawDate) {
 }
 
 // Date Output Proccessing
-
 function getMonthInWords(monthIndex) {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     return months[monthIndex];
@@ -134,7 +196,7 @@ function netWorthHandle(networth) {
 }
 
 function loadCharacter(character) {
-    const rawDate = character.birthday;
+    const rawDate = new Date(character.birthday);
     const components = ['day', 'month', 'year'];
     const processedDate = processDate(rawDate, components, true);
     const formattedDate = `${processedDate.month} ${processedDate.day}, ${processedDate.year}`;
@@ -144,7 +206,7 @@ function loadCharacter(character) {
 
     var job;
     if (typeof character.employment === "object") {
-        const rawDate = character.employment.founding;
+        const rawDate = new Date(character.employment.founding);
         const components = ['day', 'month', 'year'];
         const processedDate = processDate(rawDate, components, true);
         const formattedDate = `${processedDate.month} ${processedDate.day}, ${processedDate.year}`;
@@ -190,24 +252,13 @@ function loadCharacter(character) {
     return structure;
 }
 
-var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
-  });
-}
-
 document.addEventListener("DOMContentLoaded", function() {
     const gtaList = document.getElementById("characters-gta");
     const grbList = document.getElementById("characters-grb");
+
+    const characterAges = [];
+    let oldestCharacter = null;
+    let youngestCharacter = null;
 
     // Load GTA characters on page load
     const sortedCharactersGTA = characters.filter(character => character.game === "GTA").map(loadCharacter).sort((a, b) => {
@@ -217,6 +268,16 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     sortedCharactersGTA.forEach(function(character) {
+        const age = calculateAge(new Date(character.birthday.raw));
+        characterAges.push(age);
+
+        if (!oldestCharacter || age > calculateAge(new Date(oldestCharacter.birthday.raw))) {
+            oldestCharacter = character;
+        }
+        if (!youngestCharacter || age < calculateAge(new Date(youngestCharacter.birthday.raw))) {
+            youngestCharacter = character;
+        }
+
         const li = document.createElement("li");
         li.innerText = `${character.name.firstName} ${character.name.lastName}`;
         li.onclick = function() {
@@ -233,78 +294,101 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     sortedCharactersGRB.forEach(function(character) {
+        const age = calculateAge(new Date(character.birthday.raw));
+        characterAges.push(age);
+
+        if (!oldestCharacter || age > calculateAge(new Date(oldestCharacter.birthday.raw))) {
+            oldestCharacter = character;
+        }
+        if (!youngestCharacter || age < calculateAge(new Date(youngestCharacter.birthday.raw))) {
+            youngestCharacter = character;
+        }
+
         const li = document.createElement("li");
         li.innerText = `${character.name.firstName} ${character.name.lastName}`;
         li.onclick = function() {
+            console.log("Hello, world.");
             profileLoading(character);
         };
         grbList.appendChild(li);
     });
+
+    const ageCounts = {};
+    characterAges.forEach(age => {
+        if (ageCounts[age]) {
+            ageCounts[age]++;
+        } else {
+            ageCounts[age] = 1;
+        }
+    });
+
+    const mostCommonAge = Object.keys(ageCounts).reduce((a, b) => ageCounts[a] > ageCounts[b] ? a : b);
 });
 
-function getFormattedDate() {
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-  const currentDate = new Date();
-  const dayOfWeek = days[currentDate.getDay()];
-  const month = months[currentDate.getMonth()];
-  const day = currentDate.getDate();
-  const year = currentDate.getFullYear();
-
-  let suffix;
-  switch (day) {
-    case 1:
-    case 21:
-    case 31:
-      suffix = 'st';
-      break;
-    case 2:
-    case 22:
-      suffix = 'nd';
-      break;
-    case 3:
-    case 23:
-      suffix = 'rd';
-      break;
-    default:
-      suffix = 'th';
-  }
-
-  return `${dayOfWeek}, ${month} ${day}${suffix}, ${year}`;
-}
-
 function calculateAge(birthday) {
-  const today = new Date();
-  let age = today.getFullYear() - birthday.getFullYear();
-  const monthDifference = today.getMonth() - birthday.getMonth();
-
-  // If birth date has not yet occurred this year, subtract one from age
-  if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthday.getDate())) {
-    age--;
-  }
-
-  return age;
+    const ageDifMs = Date.now() - birthday.getTime();
+    const ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
 
-function profileLoading(character) {
-    document.getElementById("character-profile").style.display = "block";
-    document.getElementById("character-name").innerText = character.name.fullName;
-    document.getElementById("character-age").innerText = calculateAge(character.birthday.raw);
-    document.getElementById("character-gender").innerText = character.gender;
-    document.getElementById("character-birthday").innerText = character.birthday.paperNormal;
-    if (typeof character.employment === 'object' && character.employment !== null) {
-        document.getElementById("character-employment").innerText = character.employment.name; 
+function profileLoading(profile) {
+    var name = profile.name.fullName;
+    var dob = profile.birthday.paperNormal;
+    var dobSpecific = profile.birthday.paperSpecific;
+    var gender = profile.gender;
+    var employment;
+    if (typeof profile.employment === "object") {
+        employment = profile.employment.name;
     } else {
-        document.getElementById("character-employment").innerText = character.employment;
+        employment = profile.employment;
     }
-    document.getElementById("character-net-worth").innerText = character.networth;
-    document.getElementById("character-game").innerText = character.game;
-    document.getElementById("character-height").innerText = character.height;
-    document.getElementById("character-weight").innerText = character.weight;
-    document.getElementById("character-played-by").innerText = character.playedby;
+    var networth = profile.networth;
+    var playedby = profile.playedby;
+    var weight = profile.weight;
+    var height = profile.height;
+    var game = profile.game;
+
+    var details = `
+        <strong>Name:</strong> ${name}<br>
+        <strong>DOB:</strong> ${dob}<br>
+        <strong>DOB (Specific):</strong> ${dobSpecific}<br>
+        <strong>Gender:</strong> ${gender}<br>
+        <strong>Employment:</strong> ${employment}<br>
+        <strong>Net Worth:</strong> ${networth}<br>
+        <strong>Played By:</strong> ${playedby}<br>
+        <strong>Weight:</strong> ${weight}<br>
+        <strong>Height:</strong> ${height}<br>
+        <strong>Game:</strong> ${game}<br>
+    `;
+    document.getElementById("character-profile").innerHTML = details;
+    document.getElementById("character-profile").style.display = "block";
 }
 
 document.getElementById("character-profile").addEventListener('click', () => {
     document.getElementById("character-profile").style.display = "none";
 });
+
+function cloneUL(sourceUL, targetUL) {
+    const clonedItems = sourceUL.cloneNode(true).children;
+    for (let i = 0; i < clonedItems.length; i++) {
+        const clonedItem = clonedItems[i].cloneNode(true);
+        // Clone the onclick function from the source <li> to the cloned <li>
+        const onClickFunction = sourceUL.children[i].onclick;
+        if (onClickFunction) {
+            clonedItem.onclick = onClickFunction;
+            console.log(`Cloned onclick function from source <li> index ${i}: ${onClickFunction.toString()}`);
+        }
+        targetUL.appendChild(clonedItem);
+    }
+}
+
+function clone(newElement, existingULId) {
+    // Find the existing UL element using its ID
+    var existingUL = document.getElementById(existingULId);
+    if (existingUL && newElement) {
+        // Clone the existing UL contents to the new element
+        cloneUL(existingUL, newElement);
+    } else {
+        console.error("Existing UL or new element not found.");
+    }
+}
