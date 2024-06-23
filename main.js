@@ -100,6 +100,7 @@ function namegeneration() {
             <select id="genderSelect">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
+                <option value="unisex">Unisex</option>
             </select><br>
             <button id="generateBtn">Generate New Name</button>
             <strong><h1 id="fullName"></h1></strong>
