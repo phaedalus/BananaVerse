@@ -127,7 +127,7 @@ var characters = [
     },
     {
         fullname: "Robert Ronald Kennedy",
-        birthday: new Date(1988, 08, 08, 09, 11, 69),
+        birthday: new Date(1988, 06, 04, 09, 11, 69),
         employment: companies[2],
         gender: "Male",
         networth: "1.1 m",
@@ -138,7 +138,7 @@ var characters = [
     },
     {
         fullname: "Sarah Lynn Moore",
-        birthday: new Date(1992, 06, 04, 08, 00, 00),
+        birthday: new Date(1992, 11, 08, 08, 00, 00),
         employment: "Mechanic",
         gender: "Female",
         networth: "200 m",
