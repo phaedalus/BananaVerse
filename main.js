@@ -56,12 +56,59 @@ function grb_characters() {
 
 function lovearcade() {
     selectSubItem(event);
-    location.href = `./matchmaker.html`;
+    document.getElementById("feed").innerHTML = ``;
+    document.getElementById("feed").innerHTML = `
+    <center>
+        <div class="love-arcade">
+            <h1 id="love-title">Love Arcade</h1>
+            <select id="gameSelect" onchange="handleSelectChange()">
+                <option value="GTA">Grand Theft Auto V</option>
+                <option value="GRB">Ghost Recon Breakpoint</option>
+            </select><br><br>
+            <button id="runButton">Run It Back!</button><br><br>
+            <span id="love-ch1" class="character"></span>
+            <span id="love-ch2" class="character"></span>
+            <p id="compatibility" class="compatibility"></p>
+            <p id="percent" class="compatibility"></p>
+        </div>
+    </center>
+    `;
+
+    var gameSelect = document.getElementById("gameSelect");
+    var runButton = document.getElementById("runButton");
+
+    if (gameSelect && runButton) {
+        gameSelect.addEventListener("change", function() {
+            generateCompatibility();
+        });
+
+        runButton.addEventListener("click", function() {
+            generateCompatibility();
+        });
+    }
+
+    generateCompatibility();
 }
 
 function namegeneration() {
     selectSubItem(event);
-    location.href = "./names.html";
+    document.getElementById("feed").innerHTML = ``;
+    document.getElementById("feed").innerHTML = `
+    <center>
+        <div class="name-generator">
+            <h2>Name Generator</h2>
+            <select id="genderSelect">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select><br>
+            <button id="generateBtn">Generate New Name</button>
+            <strong><h1 id="fullName"></h1></strong>
+        </div>
+    </center>
+    `;
+    document.getElementById('generateBtn').addEventListener('click', generateAndDisplayName);
+    document.getElementById('genderSelect').addEventListener('change', generateAndDisplayName);
+    generateAndDisplayName();
 }
 
 // Break Apart Name Data
@@ -335,6 +382,7 @@ function profileLoading(profile) {
     var name = profile.name.fullName;
     var dob = profile.birthday.paperNormal;
     var dobSpecific = profile.birthday.paperSpecific;
+    var dobRaw = profile.birthday.raw;
     var gender = profile.gender;
     var employment;
     if (typeof profile.employment === "object") {
@@ -347,9 +395,11 @@ function profileLoading(profile) {
     var weight = profile.weight;
     var height = profile.height;
     var game = profile.game;
+    var age = calculateAge(dobRaw);
 
     var details = `
         <strong>Name:</strong> ${name}<br>
+        <strong>Age: </strong>${age}<br>
         <strong>DOB:</strong> ${dob}<br>
         <strong>DOB (Specific):</strong> ${dobSpecific}<br>
         <strong>Gender:</strong> ${gender}<br>
@@ -358,7 +408,7 @@ function profileLoading(profile) {
         <strong>Played By:</strong> ${playedby}<br>
         <strong>Weight:</strong> ${weight}<br>
         <strong>Height:</strong> ${height}<br>
-        <strong>Game:</strong> ${game}<br>
+        (Click This To Close It.)
     `;
     document.getElementById("character-profile").innerHTML = details;
     document.getElementById("character-profile").style.display = "block";
