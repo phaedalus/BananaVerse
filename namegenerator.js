@@ -156,12 +156,15 @@ function generateName(gender) {
     if (gender === 'male') {
         firstNameList = maleFirstNames;
         middleNameList = maleMiddleNames;
+        document.getElementById("fullName").style.color = "#24cbd4";
     } else if (gender === 'female') {
         firstNameList = femaleFirstNames;
         middleNameList = femaleMiddleNames;
+        document.getElementById("fullName").style.color = "#e35fc2";
     } else if (gender === 'unisex') {
         firstNameList = unisexNames;
         middleNameList = unisexNames;
+        document.getElementById("fullName").style.color = "#8495CB";
     }
 
     let fullName = '';
