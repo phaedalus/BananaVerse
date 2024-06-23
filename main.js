@@ -373,10 +373,23 @@ document.addEventListener("DOMContentLoaded", function() {
     const mostCommonAge = Object.keys(ageCounts).reduce((a, b) => ageCounts[a] > ageCounts[b] ? a : b);
 });
 
-function calculateAge(birthday) {
-    const ageDifMs = Date.now() - birthday.getTime();
-    const ageDate = new Date(ageDifMs);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
+function calculateAge(birthday, game) {
+    const today = new Date();
+    let currentYear = today.getFullYear();
+    const birthYear = birthday.getFullYear();
+    const birthMonth = birthday.getMonth();
+    const birthDay = birthday.getDate();
+
+    let age;
+
+    if (game === 'GRB') {
+        currentYear = currentYear + 1;
+        age = currentYear - birthYear - ((today.getMonth() < birthMonth || (today.getMonth() === birthMonth && today.getDate() < birthDay)) ? 1 : 0);
+    } else {
+        age = currentYear - birthYear - ((today.getMonth() < birthMonth || (today.getMonth() === birthMonth && today.getDate() < birthDay)) ? 1 : 0);
+    }
+
+    return age;
 }
 
 function profileLoading(profile) {
@@ -396,7 +409,7 @@ function profileLoading(profile) {
     var weight = profile.weight;
     var height = profile.height;
     var game = profile.game;
-    var age = calculateAge(dobRaw);
+    var age = calculateAge(dobRaw, game);
 
     var details = `
         <strong>Name:</strong> ${name}<br>
