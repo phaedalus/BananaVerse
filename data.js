@@ -82,7 +82,7 @@ var characters = [
         height: "6'4"
     },
     {
-        fullname: "Isabel Ann Jackson",
+        fullname: "Isabel Ann Jones",
         birthday: new Date(1995, 04, 16, 09, 11, 69),
         employment: companies[0],
         gender: "Female",
