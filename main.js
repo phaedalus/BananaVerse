@@ -247,7 +247,9 @@ function loadCharacter(character) {
     const rawDate = new Date(character.birthday);
     const components = ['day', 'month', 'year'];
     const processedDate = processDate(rawDate, components, true);
+    const processedDeathDate = processDate(new Date(character.dateofdeath), components, true);
     const formattedDate = `${processedDate.month} ${processedDate.day}, ${processedDate.year}`;
+    const formattedDeathDate = `${processedDeathDate.month} ${processedDeathDate.day}, ${processedDeathDate.year}`;
     const componentsun = ['month', 'day', 'year', 'hour', 'minute', 'second'];
     const processedDateUn = processDate(rawDate, componentsun);
     const unformattedDate = `${processedDateUn.month}/${processedDateUn.day}/${processedDateUn.year}:${processedDateUn.hour}:${processedDateUn.minute}:${processedDateUn.second}`;
@@ -294,7 +296,10 @@ function loadCharacter(character) {
         playedby: character.playedby,
         weight: character.weight,
         height: character.height,
-        game: character.game
+        game: character.game,
+        dead: character.dead,
+        dateofdeath: formattedDeathDate,
+        rawdeath: character.dateofdeath
     };
 
     return structure;
@@ -327,10 +332,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         const li = document.createElement("li");
-        li.innerText = `${character.name.firstName} ${character.name.lastName}`;
+        if (character.dead == true) {
+            li.style.color = "#ff4733";
+            if (character.gender == "Male") {
+                li.innerHTML = `<i class="fa-solid fa-mars" style="font-size: 12px"></i> ${character.name.firstName} ${character.name.lastName} <i class="fa-solid fa-skull"></i>`;
+            } else if (character.gender == "Female") {
+                li.innerHTML = `<i class="fa-solid fa-venus" style="font-size: 12px"></i> ${character.name.firstName} ${character.name.lastName} <i class="fa-solid fa-skull"></i>`;
+            }
+        } else {
+            if (character.gender == "Male") {
+                li.innerHTML = `<i class="fa-solid fa-mars" style="font-size: 12px"></i> ${character.name.firstName} ${character.name.lastName}`;
+            } else if (character.gender == "Female") {
+                li.innerHTML = `<i class="fa-solid fa-venus" style="font-size: 12px"></i> ${character.name.firstName} ${character.name.lastName}`;
+            }
+        }
+
         li.onclick = function() {
             profileLoading(character);
         };
+
         gtaList.appendChild(li);
     });
 
@@ -355,7 +375,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const li = document.createElement("li");
         li.innerText = `${character.name.firstName} ${character.name.lastName}`;
         li.onclick = function() {
-            console.log("Hello, world.");
             profileLoading(character);
         };
         grbList.appendChild(li);
@@ -392,6 +411,19 @@ function calculateAge(birthday, game) {
     return age;
 }
 
+function calculateAgeAtDeath(birthDate, deathDate) {
+    const birth = new Date(birthDate);
+    const death = new Date(deathDate);
+
+    const age = death.getFullYear() - birth.getFullYear();
+
+    if (death < new Date(death.getFullYear(), birth.getMonth(), birth.getDate())) {
+        return age - 1;
+    } else {
+        return age;
+    }
+}
+
 function profileLoading(profile) {
     var name = profile.name.fullName;
     var dob = profile.birthday.paperNormal;
@@ -410,20 +442,44 @@ function profileLoading(profile) {
     var height = profile.height;
     var game = profile.game;
     var age = calculateAge(dobRaw, game);
+    var dead = profile.dead;
+    var deathDate = profile.dateofdeath;
+    var rawdeath = profile.rawdeath;
+    var aged = calculateAgeAtDeath(dobRaw, rawdeath);
 
-    var details = `
-        <strong>Name:</strong> ${name}<br>
-        <strong>Age: </strong>${age}<br>
-        <strong>DOB:</strong> ${dob}<br>
-        <strong>DOB (Specific):</strong> ${dobSpecific}<br>
-        <strong>Gender:</strong> ${gender}<br>
-        <strong>Employment:</strong> ${employment}<br>
-        <strong>Net Worth:</strong> ${networth}<br>
-        <strong>Played By:</strong> ${playedby}<br>
-        <strong>Weight:</strong> ${weight}<br>
-        <strong>Height:</strong> ${height}<br>
-        (Click This To Close It.)
-    `;
+    if (profile.dead == true) {
+        var details = `
+            <span style="color: #ff4733">
+                <strong>Name:</strong> ${name}<br>
+                <strong>Dead as of ${deathDate}</strong><br>
+                <strong>Aged: </strong>${aged}<br>
+                <strong>DOB:</strong> ${dob}<br>
+                <strong>DOB (Specific):</strong> ${dobSpecific}<br>
+                <strong>Gender:</strong> ${gender}<br>
+                <strong>Employment:</strong> ${employment}<br>
+                <strong>Net Worth:</strong> ${networth}<br>
+                <strong>Played By:</strong> ${playedby}<br>
+                <strong>Weight:</strong> ${weight}<br>
+                <strong>Height:</strong> ${height}<br>
+                (Click This To Close It.)
+            </span>
+        `;
+    } else {
+        var details = `
+            <strong>Name:</strong> ${name}<br>
+            <strong>Age: </strong>${age}<br>
+            <strong>DOB:</strong> ${dob}<br>
+            <strong>DOB (Specific):</strong> ${dobSpecific}<br>
+            <strong>Gender:</strong> ${gender}<br>
+            <strong>Employment:</strong> ${employment}<br>
+            <strong>Net Worth:</strong> ${networth}<br>
+            <strong>Played By:</strong> ${playedby}<br>
+            <strong>Weight:</strong> ${weight}<br>
+            <strong>Height:</strong> ${height}<br>
+            (Click This To Close It.)
+        `;
+    }
+
     document.getElementById("character-profile").innerHTML = details;
     document.getElementById("character-profile").style.display = "block";
 }

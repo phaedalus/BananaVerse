@@ -285,7 +285,9 @@ var characters = [
         weight: "210",
         height: "6'4",
         eye: "blue",
-        hair: "black"
+        hair: "black",
+        dead: false,
+        dateofdeath: new Date(2024, 05, 30, 12, 00, 00)
     },
     {
         fullname: "Victor D'Angelo",
