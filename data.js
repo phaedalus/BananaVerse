@@ -33,6 +33,13 @@ var companies = [
         founding: new Date(1724, 08, 07, 12, 00, 00),
         founder: "Placeholder",
         value: "900 m"
+    },
+    {
+        name: "Gateway Mortgage Advisors",
+        type: "Mortgage Company",
+        founding: new Date(1957, 08, 05, 09, 00, 00),
+        founder: "Benjamin Michael Taylor",
+        value: "62 m"
     }
 ];
 
@@ -46,7 +53,9 @@ var characters = [
         game: "GTA",
         playedby: "Tru3",
         weight: "185",
-        height: "6'4"
+        height: "6'4",
+        eye: "blue",
+        hair: "black"
     },
     {
         fullname: "Tyler Michael Devereaux",
@@ -57,7 +66,9 @@ var characters = [
         game: "GTA",
         playedby: "Banana",
         weight: "200",
-        height: "6'2"
+        height: "6'2",
+        eye: "brown",
+        hair: "black"
     },
     {
         fullname: "Mitchel Allen Grayer",
@@ -79,7 +90,9 @@ var characters = [
         game: "GTA",
         playedby: "Jules",
         weight: "134",
-        height: "5'6"
+        height: "5'6",
+        eye: "green",
+        hair: "brown"
     },
     {
         fullname: "Michael Christopher Hall",
@@ -90,7 +103,9 @@ var characters = [
         game: "GTA",
         playedby: "Banana",
         weight: "220",
-        height: "6'3"
+        height: "6'3",
+        eye: "null",
+        hair: "null"
     },
     {
         fullname: "Johnathan Rustler",
@@ -101,7 +116,9 @@ var characters = [
         game: "GTA",
         playedby: "Faze",
         weight: "190",
-        height: "6'1"
+        height: "6'1",
+        eye: "brown",
+        hair: "brown"
     },
     {
         fullname: "Khloe Emma Monroe",
@@ -112,7 +129,9 @@ var characters = [
         game: "GTA",
         playedby: "Faze",
         weight: "127",
-        height: "5'5"
+        height: "5'5",
+        eye: "null",
+        hair: "null"
     },
     {
         fullname: "Colton Kenneth Black",
@@ -123,7 +142,9 @@ var characters = [
         game: "GTA",
         playedby: "Colt",
         weight: "220",
-        height: "6'3"
+        height: "6'3",
+        eye: "blue",
+        hair: "blonde"
     },
     {
         fullname: "Robert Ronald Kennedy",
@@ -134,7 +155,9 @@ var characters = [
         game: "GTA",
         playedby: "Rob",
         weight: "150",
-        height: "5'10"
+        height: "5'10",
+        eye: "null",
+        hair: "null"
     },
     {
         fullname: "Sarah Lynn Moore",
@@ -145,7 +168,9 @@ var characters = [
         game: "GTA",
         playedby: "Rob",
         weight: "100",
-        height: "5'0"
+        height: "5'0",
+        eye: "null",
+        hair: "brown"
     },
     {
         fullname: "Zhyxhio James Black",
@@ -154,7 +179,9 @@ var characters = [
         gender: "Male",
         networth: "13.7 m",
         game: "GTA",
-        playedby: "Colt"
+        playedby: "Colt",
+        eye: "null",
+        hair: "null"
     },
     {
         fullname: "Nathan Kingston",
@@ -165,7 +192,9 @@ var characters = [
         game: "GTA",
         playedby: "Banana",
         weight: "165",
-        height: "5'11"
+        height: "5'11",
+        eye: "null",
+        hair: "null"
     },
     {
         fullname: "North Marie Bradshaw",
@@ -176,7 +205,9 @@ var characters = [
         game: "GTA",
         playedby: "Goose",
         weight: "125",
-        height: "5'6"
+        height: "5'6",
+        eye: "null",
+        hair: "null"
     },
     {
         fullname: "Leo Stone Valdez",
@@ -187,7 +218,9 @@ var characters = [
         game: "GRB",
         playedby: "Tru3",
         weight: "200",
-        height: "6'1"
+        height: "6'1",
+        eye: "null",
+        hair: "null"
     },
     {
         fullname: "Mark Devereaux",
@@ -198,7 +231,9 @@ var characters = [
         game: "GRB",
         playedby: "Banana",
         weight: "200",
-        height: "6'2"
+        height: "6'2",
+        eye: "null",
+        hair: "null"
     },
     {
         fullname: "Grant Alexander Hilbert",
@@ -209,7 +244,9 @@ var characters = [
         game: "GRB",
         playedby: "Jules",
         weight: "210",
-        height: "6'0"
+        height: "6'0",
+        eye: "null",
+        hair: "null"
     },
     {
         fullname: "Elana May Smith",
@@ -220,7 +257,9 @@ var characters = [
         game: "GRB",
         playedby: "Jules",
         weight: "168",
-        height: "5'9"
+        height: "5'9",
+        eye: "null",
+        hair: "null"
     },
     {
         fullname: "Richard Thomas Rustler",
@@ -231,7 +270,9 @@ var characters = [
         game: "GRB",
         playedby: "Faze",
         weight: "200",
-        height: "5'10"
+        height: "5'10",
+        eye: "null",
+        hair: "null"
     },
     {
         fullname: "Johnathan Molina Blackwood",
@@ -242,7 +283,9 @@ var characters = [
         game: "GTA",
         playedby: "Landy",
         weight: "210",
-        height: "6'4"
+        height: "6'4",
+        eye: "blue",
+        hair: "black"
     },
     {
         fullname: "Victor D'Angelo",
@@ -253,6 +296,21 @@ var characters = [
         game: "GTA",
         playedby: "Banana",
         weight: "215",
-        height: "6'2"
+        height: "6'2",
+        eye: "brown",
+        hair: "gray"
+    },
+    {
+        fullname: "Jordyn Ivy Jackson",
+        birthday: new Date(1999, 10, 27, 15, 57, 12),
+        employment: companies[5],
+        gender: "Female",
+        networth: "2.5 m",
+        game: "GTA",
+        playedby: "Tru3",
+        weight: "125",
+        height: "5'7",
+        eye: "green",
+        hair: "brown"
     }
 ];
