@@ -55,7 +55,8 @@ var characters = [
         weight: "185",
         height: "6'4",
         eye: "blue",
-        hair: "black"
+        hair: "black",
+        id: "1mGTm"
     },
     {
         fullname: "Tyler Michael Devereaux",
@@ -68,7 +69,8 @@ var characters = [
         weight: "200",
         height: "6'2",
         eye: "brown",
-        hair: "black"
+        hair: "black",
+        id: "1tGBm"
     },
     {
         fullname: "Mitchel Allen Grayer",
@@ -79,7 +81,10 @@ var characters = [
         game: "GTA",
         playedby: "Jules",
         weight: "210",
-        height: "6'4"
+        height: "6'4",
+        eye: "green",
+        hair: "brown",
+        id: "2mGJm"
     },
     {
         fullname: "Isabel Ann Jones",
@@ -92,7 +97,8 @@ var characters = [
         weight: "134",
         height: "5'6",
         eye: "green",
-        hair: "brown"
+        hair: "brown",
+        id: "1iGJf"
     },
     {
         fullname: "Michael Christopher Hall",
@@ -105,7 +111,8 @@ var characters = [
         weight: "220",
         height: "6'3",
         eye: "null",
-        hair: "null"
+        hair: "null",
+        id: "3mGBm"
     },
     {
         fullname: "Johnathan Rustler",
@@ -118,7 +125,8 @@ var characters = [
         weight: "190",
         height: "6'1",
         eye: "brown",
-        hair: "brown"
+        hair: "brown",
+        id: "1jGFm"
     },
     {
         fullname: "Khloe Emma Monroe",
@@ -131,7 +139,8 @@ var characters = [
         weight: "127",
         height: "5'5",
         eye: "null",
-        hair: "null"
+        hair: "null",
+        id: "1kGFf"
     },
     {
         fullname: "Colton Kenneth Black",
@@ -144,7 +153,8 @@ var characters = [
         weight: "220",
         height: "6'3",
         eye: "blue",
-        hair: "blonde"
+        hair: "blonde",
+        id: "1cGCm"
     },
     {
         fullname: "Robert Ronald Kennedy",
@@ -157,7 +167,8 @@ var characters = [
         weight: "150",
         height: "5'10",
         eye: "null",
-        hair: "null"
+        hair: "null",
+        id: "1rGRm"
     },
     {
         fullname: "Sarah Lynn Moore",
@@ -170,7 +181,8 @@ var characters = [
         weight: "100",
         height: "5'0",
         eye: "null",
-        hair: "brown"
+        hair: "brown",
+        id: "1sGRf"
     },
     {
         fullname: "Zhyxhio James Black",
@@ -181,7 +193,8 @@ var characters = [
         game: "GTA",
         playedby: "Colt",
         eye: "null",
-        hair: "null"
+        hair: "null",
+        id: "1zGCm"
     },
     {
         fullname: "Nathan Kingston",
@@ -194,7 +207,8 @@ var characters = [
         weight: "165",
         height: "5'11",
         eye: "null",
-        hair: "null"
+        hair: "null",
+        id: "1nGBm"
     },
     {
         fullname: "North Marie Bradshaw",
@@ -207,7 +221,8 @@ var characters = [
         weight: "125",
         height: "5'6",
         eye: "null",
-        hair: "null"
+        hair: "null",
+        id: "2nGGf"
     },
     {
         fullname: "Leo Stone Valdez",
@@ -220,7 +235,8 @@ var characters = [
         weight: "200",
         height: "6'1",
         eye: "null",
-        hair: "null"
+        hair: "null",
+        id: "1lGHTm"
     },
     {
         fullname: "Mark Devereaux",
@@ -233,7 +249,8 @@ var characters = [
         weight: "200",
         height: "6'2",
         eye: "null",
-        hair: "null"
+        hair: "null",
+        id: "4mGHBm"
     },
     {
         fullname: "Grant Alexander Hilbert",
@@ -246,7 +263,8 @@ var characters = [
         weight: "210",
         height: "6'0",
         eye: "null",
-        hair: "null"
+        hair: "null",
+        id: "1gGHJm"
     },
     {
         fullname: "Elana May Smith",
@@ -259,7 +277,8 @@ var characters = [
         weight: "168",
         height: "5'9",
         eye: "null",
-        hair: "null"
+        hair: "null",
+        id: "1eGHJf"
     },
     {
         fullname: "Richard Thomas Rustler",
@@ -272,7 +291,8 @@ var characters = [
         weight: "200",
         height: "5'10",
         eye: "null",
-        hair: "null"
+        hair: "null",
+        id: "2rGHFm"
     },
     {
         fullname: "Johnathan Molina Blackwood",
@@ -287,7 +307,8 @@ var characters = [
         eye: "blue",
         hair: "black",
         dead: false,
-        dateofdeath: new Date(2024, 05, 30, 12, 00, 00)
+        dateofdeath: new Date(2024, 05, 30, 12, 00, 00),
+        id: "2jGLm"
     },
     {
         fullname: "Victor D'Angelo",
@@ -300,7 +321,8 @@ var characters = [
         weight: "215",
         height: "6'2",
         eye: "brown",
-        hair: "gray"
+        hair: "gray",
+        id: "1vGBm"
     },
     {
         fullname: "Jordyn Ivy Jackson",
@@ -313,6 +335,7 @@ var characters = [
         weight: "125",
         height: "5'7",
         eye: "green",
-        hair: "brown"
+        hair: "brown",
+        id: "3jGTf"
     }
 ];

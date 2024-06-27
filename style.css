@@ -30,7 +30,7 @@
 .character-profile {
   display: none;
   position: absolute;
-  top: 50%;
+  top: 22.5%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: max-content;

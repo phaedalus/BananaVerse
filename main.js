@@ -299,7 +299,8 @@ function loadCharacter(character) {
         game: character.game,
         dead: character.dead,
         dateofdeath: formattedDeathDate,
-        rawdeath: character.dateofdeath
+        rawdeath: character.dateofdeath,
+        id: character.id
     };
 
     return structure;
@@ -426,6 +427,9 @@ function calculateAgeAtDeath(birthDate, deathDate) {
 
 function profileLoading(profile) {
     var name = profile.name.fullName;
+    var firstName = profile.name.firstName;
+    var middleName = profile.name.middleName;
+    var lastName = profile.name.lastName;
     var dob = profile.birthday.paperNormal;
     var dobSpecific = profile.birthday.paperSpecific;
     var dobRaw = profile.birthday.raw;
@@ -446,6 +450,11 @@ function profileLoading(profile) {
     var deathDate = profile.dateofdeath;
     var rawdeath = profile.rawdeath;
     var aged = calculateAgeAtDeath(dobRaw, rawdeath);
+    var id = profile.id;
+    const time_now_raw = new Date();
+    let components = ['day', 'month', 'year'];
+    let processedDate = processDate(time_now_raw, components, true);
+    let time_now = `${processedDate.month} ${processedDate.day}, ${processedDate.year}`;
 
     if (profile.dead == true) {
         var details = `
@@ -466,17 +475,14 @@ function profileLoading(profile) {
         `;
     } else {
         var details = `
-            <strong>Name:</strong> ${name}<br>
-            <strong>Age: </strong>${age}<br>
-            <strong>DOB:</strong> ${dob}<br>
-            <strong>DOB (Specific):</strong> ${dobSpecific}<br>
-            <strong>Gender:</strong> ${gender}<br>
-            <strong>Employment:</strong> ${employment}<br>
-            <strong>Net Worth:</strong> ${networth}<br>
-            <strong>Played By:</strong> ${playedby}<br>
-            <strong>Weight:</strong> ${weight}<br>
-            <strong>Height:</strong> ${height}<br>
-            (Click This To Close It.)
+            <strong>${name}</strong><br>
+            <strong>${gender}</strong><br>
+            <strong>${age}</strong> years old as of <strong>${time_now}</strong><br>
+            Born on <strong>${dob}</strong><br>
+            <strong>${employment}</strong> is what they do for a living<br>
+            Estimated worth <strong>${networth}</strong><br>
+            Acted & Created by <strong>${playedby}</strong><br>
+            <strong>${firstName}</strong> approximately weighs <strong>${weight} lbs</strong><br> standing at around <strong>${height}</strong><br>
         `;
     }
 
@@ -492,11 +498,9 @@ function cloneUL(sourceUL, targetUL) {
     const clonedItems = sourceUL.cloneNode(true).children;
     for (let i = 0; i < clonedItems.length; i++) {
         const clonedItem = clonedItems[i].cloneNode(true);
-        // Clone the onclick function from the source <li> to the cloned <li>
         const onClickFunction = sourceUL.children[i].onclick;
         if (onClickFunction) {
             clonedItem.onclick = onClickFunction;
-            console.log(`Cloned onclick function from source <li> index ${i}: ${onClickFunction.toString()}`);
         }
         targetUL.appendChild(clonedItem);
     }
