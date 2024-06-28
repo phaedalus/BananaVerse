@@ -306,8 +306,8 @@ var characters = [
         height: "6'4",
         eye: "blue",
         hair: "black",
-        dead: false,
-        dateofdeath: new Date(2024, 05, 30, 12, 00, 00),
+        dead: true,
+        dateofdeath: new Date(2024, 08, 01, 06, 19, 00),
         id: "2jGLm"
     },
     {
@@ -337,5 +337,19 @@ var characters = [
         eye: "green",
         hair: "brown",
         id: "3jGTf"
+    },
+    {
+        fullname: "Kane Robin Barlowe",
+        birthday: new Date(1998, 10, 17, 12, 00, 00),
+        employment: "Pizza Delivery",
+        gender: "Male",
+        networth: "1 k",
+        game: "GTA",
+        playedby: "Landy",
+        weight: "205",
+        height: "6'4",
+        eye: "green",
+        hair: "brown",
+        id: "2kGLm"
     }
 ];

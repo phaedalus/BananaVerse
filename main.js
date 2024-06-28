@@ -374,10 +374,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         const li = document.createElement("li");
-        li.innerText = `${character.name.firstName} ${character.name.lastName}`;
+        if (character.dead == true) {
+            li.style.color = "#ff4733";
+            if (character.gender == "Male") {
+                li.innerHTML = `<i class="fa-solid fa-mars" style="font-size: 12px"></i> ${character.name.firstName} ${character.name.lastName} <i class="fa-solid fa-skull"></i>`;
+            } else if (character.gender == "Female") {
+                li.innerHTML = `<i class="fa-solid fa-venus" style="font-size: 12px"></i> ${character.name.firstName} ${character.name.lastName} <i class="fa-solid fa-skull"></i>`;
+            }
+        } else {
+            if (character.gender == "Male") {
+                li.innerHTML = `<i class="fa-solid fa-mars" style="font-size: 12px"></i> ${character.name.firstName} ${character.name.lastName}`;
+            } else if (character.gender == "Female") {
+                li.innerHTML = `<i class="fa-solid fa-venus" style="font-size: 12px"></i> ${character.name.firstName} ${character.name.lastName}`;
+            }
+        }
+
         li.onclick = function() {
             profileLoading(character);
         };
+
         grbList.appendChild(li);
     });
 
@@ -405,24 +420,51 @@ function calculateAge(birthday, game) {
     if (game === 'GRB') {
         currentYear = currentYear + 1;
         age = currentYear - birthYear - ((today.getMonth() < birthMonth || (today.getMonth() === birthMonth && today.getDate() < birthDay)) ? 1 : 0);
-    } else {
+    } else if (game === 'GTA') {
+        currentYear = currentYear - 1;
         age = currentYear - birthYear - ((today.getMonth() < birthMonth || (today.getMonth() === birthMonth && today.getDate() < birthDay)) ? 1 : 0);
     }
 
     return age;
 }
 
-function calculateAgeAtDeath(birthDate, deathDate) {
+function calculateAgeAtDeath(game, birthDate, deathDate) {
     const birth = new Date(birthDate);
     const death = new Date(deathDate);
+    let gameYear = death.getFullYear();
+    if (game == "GTA") {
+        gameYear = death.getFullYear() - 1;
+    } else if (game == "GRB") {
+        gameYear = death.getFullYear() + 1;
+    }
 
-    const age = death.getFullYear() - birth.getFullYear();
+    const age = gameYear - birth.getFullYear();
 
     if (death < new Date(death.getFullYear(), birth.getMonth(), birth.getDate())) {
         return age - 1;
     } else {
         return age;
     }
+}
+
+function modifyEndingNumber(str, operation) {
+    // Match the ending number in the string
+    const regex = /(\d+)(?!.*\d)/;
+    const match = str.match(regex);
+    
+    if (match) {
+        // Extract the ending number
+        const endingNumber = parseInt(match[0], 10);
+        
+        // Modify the number based on the operation
+        const modifiedNumber = operation === '+' ? endingNumber + 1 : endingNumber - 1;
+        
+        // Replace the old number with the new number in the string
+        return str.replace(regex, modifiedNumber);
+    }
+    
+    // If no ending number is found, return the original string
+    return str;
 }
 
 function profileLoading(profile) {
@@ -447,30 +489,35 @@ function profileLoading(profile) {
     var game = profile.game;
     var age = calculateAge(dobRaw, game);
     var dead = profile.dead;
-    var deathDate = profile.dateofdeath;
+    if (game == "GTA") {
+        deathDate = modifyEndingNumber(profile.dateofdeath, "-");
+    } else if (game == "GRB") {
+        deathDate = modifyEndingNumber(profile.dateofdeath, "+");
+    }
     var rawdeath = profile.rawdeath;
-    var aged = calculateAgeAtDeath(dobRaw, rawdeath);
+    var aged = calculateAgeAtDeath(profile.game ,dobRaw, rawdeath);
     var id = profile.id;
     const time_now_raw = new Date();
     let components = ['day', 'month', 'year'];
     let processedDate = processDate(time_now_raw, components, true);
-    let time_now = `${processedDate.month} ${processedDate.day}, ${processedDate.year}`;
+    if (game == "GTA") {
+        time_now = `${processedDate.month} ${processedDate.day}, ${modifyEndingNumber(processedDate.year, "-")}`;
+    } else if (game == "GRB") {
+        time_now = `${processedDate.month} ${processedDate.day}, ${modifyEndingNumber(processedDate.year, "+")}`;
+    }
 
     if (profile.dead == true) {
         var details = `
             <span style="color: #ff4733">
-                <strong>Name:</strong> ${name}<br>
-                <strong>Dead as of ${deathDate}</strong><br>
-                <strong>Aged: </strong>${aged}<br>
-                <strong>DOB:</strong> ${dob}<br>
-                <strong>DOB (Specific):</strong> ${dobSpecific}<br>
-                <strong>Gender:</strong> ${gender}<br>
-                <strong>Employment:</strong> ${employment}<br>
-                <strong>Net Worth:</strong> ${networth}<br>
-                <strong>Played By:</strong> ${playedby}<br>
-                <strong>Weight:</strong> ${weight}<br>
-                <strong>Height:</strong> ${height}<br>
-                (Click This To Close It.)
+                <strong>${name}</strong><br>
+                <strong>${gender}</strong><br>
+                Lived until <strong>${aged}</strong> years of age<br>
+                Left this plane on <strong>${deathDate}</strong><br>
+                Born on <strong>${dob}</strong><br>
+                <strong>${employment}</strong> is what they did for a living<br>
+                Estimated worth <strong>${networth}</strong><br>
+                Acted & Created by <strong>${playedby}</strong><br>
+                <strong>${firstName}</strong> approximately weighed <strong>${weight} lbs</strong><br> standing at around <strong>${height}</strong><br>
             </span>
         `;
     } else {
