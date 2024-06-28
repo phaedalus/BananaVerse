@@ -40,6 +40,13 @@ var companies = [
         founding: new Date(1957, 08, 05, 09, 00, 00),
         founder: "Benjamin Michael Taylor",
         value: "62 m"
+    },
+    {
+        name: "Woods Business Loans",
+        type: "Business Loans",
+        founding: new Date(2024, 07, 26, 12, 00, 00),
+        founder: "Ryan Cole Woods",
+        value: "10 m"
     }
 ];
 
@@ -351,5 +358,19 @@ var characters = [
         eye: "green",
         hair: "brown",
         id: "2kGLm"
+    },
+    {
+        fullname: "Ryan Cole Woods",
+        birthday: new Date(1997, 00, 23, 12, 00, 00),
+        employment: companies[6],
+        gender: "Male",
+        networth: "200 m",
+        game: "GTA",
+        playedby: "Hosea",
+        weight: "190",
+        height: "6'1",
+        eye: "brown",
+        hair: "black",
+        id: "3rGHm"
     }
 ];
