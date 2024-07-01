@@ -55,7 +55,6 @@ body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: hidden;
 }
 
 /* Feed Styles */
@@ -66,11 +65,7 @@ body {
   height: 100vh; 
 }
 
-#characters-gta {
-  display: none;
-}
-
-#characters-grb {
+.hide {
   display: none;
 }
 
