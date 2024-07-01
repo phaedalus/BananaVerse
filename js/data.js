@@ -687,19 +687,6 @@ var characters = [
         dateofdeath: new Date(2023, 01, 01, 12, 00, 00)
     },
     {
-        fullname: "Michael Hall",
-        birthday: new Date(1976, 02, 14, 12, 00, 00),
-        employment: "Placeholder",
-        gender: "Male",
-        networth: "100 m",
-        game: "GTA",
-        playedby: "Banana",
-        weight: "200",
-        height: "6'1",
-        eye: "brown",
-        hair: "brown"
-    },
-    {
         fullname: "Noah Doe",
         birthday: new Date(1998, 04, 27, 12, 00, 00),
         employment: "Placeholder",
