@@ -1,7 +1,13 @@
 function generateRandomCharacter(game) {
+    // Filter characters by game and check that they are not dead
     var filteredCharacters = characters.filter(function(character) {
-        return character.game === game;
+        return character.game === game && !character.dead;
     });
+
+    if (filteredCharacters.length < 2) {
+        // If there are fewer than 2 characters, return a message or handle the case appropriately
+        return ["Not enough characters", "Not enough characters"];
+    }
 
     var character1Index = Math.floor(Math.random() * filteredCharacters.length);
     var character2Index = Math.floor(Math.random() * filteredCharacters.length);
@@ -41,8 +47,18 @@ function generateCompatibility() {
         word = 'Fiery';
     }
 
-    document.getElementById("compatibility").innerText = "Compatibility: " + word;
-    document.getElementById("percent").innerText = compatibility.toFixed(1) + "%";
+    if (game == "RDR") {
+        document.getElementById("compatibility").style.display = "none";
+        document.getElementById("percent").style.display = "none";
+    } else if (game == "ACU") {
+        document.getElementById("compatibility").style.display = "none";
+        document.getElementById("percent").style.display = "none";
+    } else {
+        document.getElementById("compatibility").style.display = "block";
+        document.getElementById("percent").style.display = "block";
+        document.getElementById("compatibility").innerText = "Compatibility: " + word;
+        document.getElementById("percent").innerText = compatibility.toFixed(1) + "%";
+    }
 }
 
 function handleSelectChange() {
@@ -60,5 +76,13 @@ function handleSelectChange() {
         one.style.fontFamily = "pricedown";
         c1.style.fontFamily = "pricedown";
         c2.style.fontFamily = "pricedown";
+    } else if (selectedValue == "RDR") {
+        one.style.fontFamily = "rdr";
+        c1.style.fontFamily = "rdr";
+        c2.style.fontFamily = "rdr";
+    } else if (selectedValue == "ACU") {
+        one.style.fontFamily = "assassin";
+        c1.style.fontFamily = "assassin";
+        c2.style.fontFamily = "assassin";
     }
 }

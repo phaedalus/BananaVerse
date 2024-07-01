@@ -17,6 +17,16 @@
   src: url("./font/eurostile.ttf");
 }
 
+@font-face {
+  font-family: rdr;
+  src: url("./font/rdr.ttf");
+}
+
+@font-face {
+  font-family: assassin;
+  src: url("./font/assassin.ttf");
+}
+
 /* Extra UI Buttons */
 
 .extra {
@@ -239,6 +249,26 @@ li:hover {
 
 .love-arcade select:hover {
   background-color: #ff4c4c;
+}
+
+.character {
+  font-weight: bold;
+  text-shadow: 1px 1px black;
+  background-color: #ff6666;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  font-family: "pricedown";
+  font-size: 24px;
+}
+
+.compatibility {
+  font-size: 18px;
+  color: #ff6666;
+  text-shadow: 1px 1px black;
 }
 
 /* Media Queries for responsive design */

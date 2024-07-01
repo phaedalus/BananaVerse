@@ -94,6 +94,8 @@ function lovearcade() {
             <select id="gameSelect" onchange="handleSelectChange()">
                 <option value="GTA">Grand Theft Auto V</option>
                 <option value="GRB">Ghost Recon Breakpoint</option>
+                <option value="ACU">Asssassin's Creed Unity</option>
+                <option value="RDR">Red Dead Redemption 2</option>
             </select><br><br>
             <button id="runButton">Run It Back!</button><br><br>
             <span id="love-ch1" class="character"></span>
