@@ -849,15 +849,13 @@ var characters = [
         fullname: "Alice Green",
         birthday: new Date(1997, 09, 14, 12, 00, 00),
         employment: "Placeholder",
-        gender: "Male",
+        gender: "Female",
         networth: "100 m",
         game: "GTA",
-        playedby: "Tucker",
-        weight: "200",
-        height: "6'1",
+        playedby: "Dark",
+        weight: "123",
+        height: "5'7",
         eye: "brown",
-        hair: "brown",
-        dead: true,
-        dateofdeath: new Date(2023, 01, 01, 12, 00, 00)
+        hair: "red"
     }
 ];

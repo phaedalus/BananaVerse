@@ -41,19 +41,23 @@
 .character-profile {
   display: none;
   position: absolute;
-  top: 22.5%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: max-content;
   height: 25%;
   padding: 25px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.9);
   border: 2px solid #000;
   text-align: center;
   user-select: none;
   height: max-content;
   color: white;
   border: 1px solid white;
+}
+
+.character-profile:hover {
+  cursor: pointer;
 }
 
 /* Page Styling */
@@ -93,6 +97,10 @@ li {
   font-weight: bold;
   cursor: pointer;
   text-decoration: underline;
+}
+
+#characterList li {
+  max-width: max-content;
 }
 
 /* Bottom Ui Styles */

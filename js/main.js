@@ -204,6 +204,8 @@ function profileLoading(profile) {
         id
     } = profile;
 
+    genderSymbol = "♂";
+
     const employmentName = typeof employment === "object" ? employment.name : employment;
     const age = calculateAge(dobRaw, game);
     const aged = calculateAgeAtDeath(game, dobRaw, rawdeath);
@@ -216,10 +218,15 @@ function profileLoading(profile) {
         ? `${processedDate.month} ${processedDate.day}, ${modifyEndingNumber(processedDate.year, "-")}`
         : `${processedDate.month} ${processedDate.day}, ${modifyEndingNumber(processedDate.year, "+")}`;
 
+    if (gender == "Male") {
+        genderSymbol = `<i class="fa-solid fa-mars" style="color: #14a5e3"></i>`;
+    } else if (gender == "Female") {
+        genderSymbol = `<i class="fa-solid fa-venus" style="color: #e016e0"></i>`;
+    }
+
     const details = dead ? `
         <span style="color: #ff4733">
-            <strong>${fullName}</strong><br>
-            <strong>${gender}</strong><br>
+            <strong>${fullName} ${genderSymbol}</strong><br>
             Lived until <strong>${aged}</strong> years of age<br>
             Left this plane on <strong>${deathDate}</strong><br>
             Born on <strong>${dob}</strong><br>
@@ -228,14 +235,13 @@ function profileLoading(profile) {
             Acted & Created by <strong>${playedby}</strong><br>
             <strong>${firstName}</strong> approximately weighed <strong>${weight} lbs</strong><br> standing at around <strong>${height}</strong><br>
         </span>` : `
-        <strong>${fullName}</strong><br>
-        <strong>${gender}</strong><br>
-        <strong>${age}</strong> years old as of <strong>${time_now}</strong><br>
-        Born on <strong>${dob}</strong><br>
-        <strong>${employmentName}</strong> is what they do for a living<br>
-        Estimated worth <strong>${networth}</strong><br>
-        Acted & Created by <strong>${playedby}</strong><br>
-        <strong>${firstName}</strong> approximately weighs <strong>${weight} lbs</strong><br> standing at around <strong>${height}</strong><br>`;
+        <strong>${fullName} ${genderSymbol}</strong><br>
+        <strong style="color: #fa1e89">${age}</strong> years old as of <strong style="color: #fa1e89">${time_now}</strong><br>
+        Born on <strong style="color: #fa1e89">${dob}</strong><br>
+        <strong style="color: #b6e813">${employmentName}</strong> is what they do for a living<br>
+        Estimated worth <strong style="color: #a813e8">${networth}</strong><br>
+        Acted & Created by <strong style="color: #14e35c">${playedby}</strong><br>
+        <strong>${firstName}</strong> approximately weighs <strong style="color: #42f5bf">${weight} lbs</strong><br> standing at around <strong style="color: #42f5bf">${height}</strong><br>`;
 
     const profileElement = document.getElementById("character-profile");
     profileElement.innerHTML = details;
