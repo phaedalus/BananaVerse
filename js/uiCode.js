@@ -170,7 +170,7 @@ function lovearcade() {
             <button id="runButton">Run It Back!</button>
             <p id="percent" class="compatibility"></p>
             <p id="compatibility" class="compatibility"></p>
-            <span id="love-ch1" class="character"></span>
+            <span id="love-ch1" class="character"></span><br><br><br>
             <span id="love-ch2" class="character"></span>
         </div>
     </center>`);
@@ -229,6 +229,10 @@ function changelog() {
                     <li>Improved detection of 'Alive/Dead' buttons to optimize rendering power.</li>
                     <li>Added characters' games to the Love Arcade.</li>
                     <li>Updated the Love Arcade's UI.</li>
+                </ul>
+                <li><b>1.5h1 - Hotfix</b></li>
+                <ul>
+                    <li>Fixed text and button clipping in the Love Arcade.</li>
                 </ul>
             </ul>
         </center>
