@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const acuListDead = document.getElementById("characters-acu-dead");
 
     const characterAges = [];
+    const birthMonths = [];
     let oldestCharacter = null;
     let youngestCharacter = null;
 
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function processCharacters(characters, game, aliveList, deadList) {
         const filteredCharacters = characters.filter(character => character.game === game).map(loadCharacter);
-        
+
         // Separate and sort alive and dead characters
         const aliveCharacters = filteredCharacters.filter(character => !character.dead).sort((a, b) => {
             const nameA = `${a.name.firstName} ${a.name.lastName}`;
@@ -52,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
         aliveCharacters.forEach(character => {
             const age = calculateAge(new Date(character.birthday.raw));
             characterAges.push(age);
+            birthMonths.push(new Date(character.birthday.raw).getMonth());
 
             if (!oldestCharacter || age > calculateAge(new Date(oldestCharacter.birthday.raw))) {
                 oldestCharacter = character;
@@ -68,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
         deadCharacters.forEach(character => {
             const age = calculateAge(new Date(character.birthday.raw));
             characterAges.push(age);
+            birthMonths.push(new Date(character.birthday.raw).getMonth());
 
             if (!oldestCharacter || age > calculateAge(new Date(oldestCharacter.birthday.raw))) {
                 oldestCharacter = character;
@@ -100,8 +103,18 @@ document.addEventListener("DOMContentLoaded", function() {
     }, {});
 
     const mostCommonAge = Object.keys(ageCounts).reduce((a, b) => ageCounts[a] > ageCounts[b] ? a : b);
-    //oldestCharacter.name.firstName
-    //youngestCharacter.name.lastName
+    
+    // Calculate most and least common birth months
+    const monthCounts = birthMonths.reduce((counts, month) => {
+        counts[month] = (counts[month] || 0) + 1;
+        return counts;
+    }, {});
+
+    const mostCommonMonthIndex = Object.keys(monthCounts).reduce((a, b) => monthCounts[a] > monthCounts[b] ? a : b);
+    const leastCommonMonthIndex = Object.keys(monthCounts).reduce((a, b) => monthCounts[a] < monthCounts[b] ? a : b);
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const mostCommonMonth = monthNames[mostCommonMonthIndex];
+    const leastCommonMonth = monthNames[leastCommonMonthIndex];
 });
 
 function modifyEndingNumber(str, operation) {
@@ -182,3 +195,84 @@ function profileLoading(profile) {
 document.getElementById("character-profile").addEventListener('click', () => {
     document.getElementById("character-profile").style.display = "none";
 });
+
+function calculateAge(dateString, game) {
+    const birthDate = new Date(dateString);
+    const today = new Date();
+    const yearOffset = game === "GTA" ? -1 : 1;
+    const age = today.getFullYear() + yearOffset - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+    const dayDifference = today.getDate() - birthDate.getDate();
+
+    if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+        return age - 1;
+    }
+
+    return age;
+}
+
+function calculateAgeAtDeath(game, dobRaw, rawdeath) {
+    const birthDate = new Date(dobRaw);
+    const deathDate = new Date(rawdeath);
+    const yearOffset = game === "GTA" ? -1 : 1;
+    const ageAtDeath = deathDate.getFullYear() + yearOffset - birthDate.getFullYear();
+    const monthDifference = deathDate.getMonth() - birthDate.getMonth();
+    const dayDifference = deathDate.getDate() - birthDate.getDate();
+
+    if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+        return ageAtDeath - 1;
+    }
+
+    return ageAtDeath;
+}
+
+function processDate(date, components, monthAsWord) {
+    const processedDate = {};
+    const months = [
+        "January", "February", "March", "April",
+        "May", "June", "July", "August",
+        "September", "October", "November", "December"
+    ];
+
+    components.forEach(component => {
+        switch (component) {
+            case 'day':
+                processedDate.day = date.getDate();
+                break;
+            case 'month':
+                processedDate.month = monthAsWord ? months[date.getMonth()] : date.getMonth() + 1;
+                break;
+            case 'year':
+                processedDate.year = date.getFullYear();
+                break;
+        }
+    });
+
+    return processedDate;
+}
+
+function loadCharacter(character) {
+    return {
+        id: character.id,
+        name: {
+            firstName: character.name.first,
+            lastName: character.name.last,
+            fullName: `${character.name.first} ${character.name.last}`
+        },
+        gender: character.gender,
+        birthday: {
+            raw: character.birthday,
+            paperNormal: processDate(new Date(character.birthday), ['month', 'day', 'year'], true)
+        },
+        employment: character.employment,
+        networth: character.netWorth,
+        playedby: character.playedBy,
+        weight: character.weight,
+        height: character.height,
+        game: character.game,
+        dead: character.dead,
+        dateofdeath: processDate(new Date(character.dateOfDeath), ['month', 'day', 'year'], true),
+        rawdeath: character.dateOfDeath,
+        alias: character.alias || null
+    };
+}

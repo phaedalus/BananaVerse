@@ -65,13 +65,12 @@ body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+  overflow-y: hidden;
+  user-select: none;
 }
 
 /* Feed Styles */
 #feed {
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center;    /* Center vertically */
   height: 100vh; 
 }
 
@@ -82,16 +81,18 @@ body {
 ul {
   list-style-type: none;
   color: white;
+  margin: 0;
+  padding: 0; 
 }
 
 li {
   font-size: 13.5px;
 }
 
-li:hover {
-  text-decoration: underline;
+#characterList li:hover {
   font-weight: bold;
   cursor: pointer;
+  text-decoration: underline;
 }
 
 /* Bottom Ui Styles */
@@ -333,4 +334,46 @@ li:hover {
   .sub-item {
     padding: 5px 0;
   }
+}
+
+/* Alive / Dead - Button Styling */
+.adb {
+  background-color: #333; /* Dark background */
+  color: #fff; /* White text */
+  padding: 12px 24px; /* Padding for size */
+  border: 2px solid #444; /* Slightly lighter border */
+  border-radius: 8px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 1px; /* Spacing between letters */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: all 0.3s ease; /* Smooth transition effect */
+  text-shadow: 1px 1px black;
+}
+
+.adb:hover {
+  background-color: #444; /* Slightly lighter background on hover */
+  border-color: #555; /* Slightly lighter border on hover */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Glow effect on hover */
+}
+
+.adb:active {
+  background-color: #222; /* Darker background on click */
+  border-color: #333; /* Darker border on click */
+  box-shadow: none; /* Remove glow on click */
+}
+
+.adba {
+  background-color: #4ee833;
+}
+
+.adba:hover {
+  background-color: #3bb526;
+}
+
+/* Changelog Styling */
+.changelog:hover {
+  text-decoration: none;
+  user-select: none;
 }
