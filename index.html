@@ -4,29 +4,29 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 		<link rel="icon" type="image/x-icon" href="logo.ico">
-		<title>BananaVerse - 1.5h1</title>
+		<title>BananaVerse - 1.5h1m1</title>
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body onload="game_render('gta')">
 		<div id="feed"></div>
 		<div class="bottom-nav">
-	        <div class="nav-item" onclick="toggleMenu(this)">
+	        <div class="nav-item" onclick="toggleMenu(this)" id="games">
 	            <i class="fa-solid fa-gamepad nav-icon"></i>
-	            <span class="nav-text">Games</span>
+	            <span class="nav-text" id="nav-games-text">Games</span>
 	            <div class="sub-menu">
-	                <div class="sub-item" onclick="game_render('gta')">Grand Theft Auto V</div>
-	                <div class="sub-item" onclick="game_render('grb')">Tom Clancy's Ghost Recon Breakpoint</div>
-	                <div class="sub-item" onclick="game_render('acu')">Assassin's Creed Unity</div>
-	                <div class="sub-item" onclick="game_render('rdr')">Red Dead Redemption 2</div>
+	                <div class="sub-item" onclick="game_render('gta')" id="gta-itm">Grand Theft Auto V</div>
+	                <div class="sub-item" onclick="game_render('grb')" id="grb-itm">Tom Clancy's Ghost Recon Breakpoint</div>
+	                <div class="sub-item" onclick="game_render('acu')" id="acu-itm">Assassin's Creed Unity</div>
+	                <div class="sub-item" onclick="game_render('rdr')" id="rdr-itm">Red Dead Redemption 2</div>
 	            </div>
 	        </div>
-	        <div class="nav-item" onclick="toggleMenu(this)">
+	        <div class="nav-item" onclick="toggleMenu(this)" id="extras">
 	            <i class="fa-solid fa-bars nav-icon"></i>
-	            <span class="nav-text">Extras</span>
+	            <span class="nav-text" id="nav-extras-text">Extras</span>
 	            <div class="sub-menu">
-	                <div class="sub-item" onclick="lovearcade()">Love Arcade</div>
-	                <div class="sub-item" onclick="namegeneration()">Name Generator</div>
-	                <div class="sub-item" onclick="changelog()">Changelog</div>
+	                <div class="sub-item" onclick="lovearcade()" id="la-itm">Love Arcade</div>
+	                <div class="sub-item" onclick="namegeneration()" id="ng-itm">Name Generator</div>
+	                <div class="sub-item" onclick="changelog()" id="c-itm">Changelog</div>
 	            </div>
 	        </div>
 	    </div>

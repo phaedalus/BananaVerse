@@ -68,7 +68,6 @@ function clone(newElement, existingULId) {
 
 // Render game content by cloning and displaying the relevant UL element
 function game_render(game) {
-    console.log(game);
     selectSubItem(event);
 
     var char_ul_alive = document.createElement("ul");
@@ -222,6 +221,14 @@ function changelog() {
         <center>
             <br><br><br><br>
             <ul class="changelog">
+                <li><b>1.5h1m1 - Minor Update</b></li>
+                <ul>
+                    <li>Added keyboard shortcuts for desktop users.</li>
+                </ul><br>
+                <li><b>1.5h1 - Hotfix</b></li>
+                <ul>
+                    <li>Fixed text and button clipping in the Love Arcade.</li>
+                </ul><br>
                 <li><b>1.5 - Quality of Life Update</b></li>
                 <ul>
                     <li>Added 'Alive/Dead' buttons to allow for easier navigation through character lists.</li>
@@ -229,10 +236,6 @@ function changelog() {
                     <li>Improved detection of 'Alive/Dead' buttons to optimize rendering power.</li>
                     <li>Added characters' games to the Love Arcade.</li>
                     <li>Updated the Love Arcade's UI.</li>
-                </ul>
-                <li><b>1.5h1 - Hotfix</b></li>
-                <ul>
-                    <li>Fixed text and button clipping in the Love Arcade.</li>
                 </ul>
             </ul>
         </center>

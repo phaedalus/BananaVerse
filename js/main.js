@@ -115,6 +115,56 @@ document.addEventListener("DOMContentLoaded", function() {
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const mostCommonMonth = monthNames[mostCommonMonthIndex];
     const leastCommonMonth = monthNames[leastCommonMonthIndex];
+
+    if (isUsingComputer()) {
+      var itm1 = document.getElementById("gta-itm");
+      var itm2 = document.getElementById("grb-itm");
+      var itm3 = document.getElementById("acu-itm");
+      var itm4 = document.getElementById("rdr-itm");
+      var itm5 = document.getElementById("la-itm");
+      var itm6 = document.getElementById("ng-itm");
+      var itm7 = document.getElementById("c-itm");
+      itm1.innerText = "Grand Theft Auto V (1)";
+      itm2.innerText = "Tom Clancy's Ghost Recon Breakpoint (2)";
+      itm3.innerText = "Assassin's Creed Unity (3)";
+      itm4.innerText = "Red Dead Redemption 2 (4)";
+      itm5.innerText = "Love Arcade (5)";
+      itm6.innerText = "Name Generator (6)";
+      itm7.innerText = "Changelog (7)";
+      var nav1text = document.getElementById("nav-games-text");
+      var nav2text = document.getElementById("nav-extras-text");
+      nav1text.innerText = "Games (Ctrl)";
+      nav2text.innerText = "Extras (Shift)";
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Control') {
+            toggleMenu(document.getElementById("games"));
+        }
+        if (event.key === 'Shift') {
+            toggleMenu(document.getElementById("extras"));
+        }
+        if (event.key === '1') {
+            game_render('gta');
+        }
+        if (event.key === '2') {
+            game_render('grb');
+        }
+        if (event.key === '3') {
+            game_render('acu');
+        }
+        if (event.key === '4') {
+            game_render('rdr');
+        }
+        if (event.key === '5') {
+            lovearcade();
+        }
+        if (event.key === '6') {
+            namegeneration();
+        }
+        if (event.key === '7') {
+            changelog();
+        }
+      });
+    }
 });
 
 function modifyEndingNumber(str, operation) {
@@ -275,4 +325,10 @@ function loadCharacter(character) {
         rawdeath: character.dateOfDeath,
         alias: character.alias || null
     };
+}
+
+function isUsingComputer() {
+  const userAgent = navigator.userAgent;
+  const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(userAgent);
+  return !isMobile;
 }
