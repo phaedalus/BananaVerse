@@ -229,7 +229,7 @@ function theStory() {
             <h1 style="color: #ffcb3b"><strong>The Story</strong></h1>
             <p style="color: #e8b935">(To catch up or jog your memory.)</p>
             <button class="dark-mode-button" onclick="gtaStory()" style="color: white; font-family: pricedown; text-shadow: 1px 1px black;">Grand Theft Auto V</button><br>
-            <button class="dark-mode-button" onclick="grbStory()" style="color: white; font-family: euro; text-shadow: 1px 1px black;">Tom Clancy's Recon Breakpoint</button><br>
+            <button class="dark-mode-button" onclick="grbStory()" style="color: white; font-family: euro; text-shadow: 1px 1px black;">Tom Clancy's Ghost Recon Breakpoint</button><br>
             <button class="dark-mode-button" onclick="acuStory()" style="color: white; font-family: assassin; text-shadow: 1px 1px black;">Assassin's Creed Unity</button><br>
             <button class="dark-mode-button" onclick="rdrStory()" style="color: white; font-family: rdr; text-shadow: 1px 1px black;">Red Dead Redemption 2</button>
         </center>
