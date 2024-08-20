@@ -4,14 +4,14 @@ var companies = [
         type: "Holding",
         founding: new Date(2020, 03, 12, 03, 12, 34),
         founder: "Maxwell Achilles Sterling",
-        value: "1.06 b"
+        value: "31.78 b"
     },
     {
-        name: "Placeholder",
-        type: "Holding",
-        founding: new Date(2020, 03, 12, 03, 12, 34),
-        founder: "Lost to time",
-        value: "100 b"
+        name: "ACD",
+        type: "Banking",
+        founding: new Date(1440, 00, 01, 12, 00, 00),
+        founder: "Arthur Charles Devereaux",
+        value: "1.16 t"
     },
     {
         name: "Rustler.co",
@@ -63,7 +63,7 @@ var characters = [
         birthday: new Date(2000, 01, 29, 12, 31, 21),
         employment: companies[0],
         gender: "Male",
-        networth: "985 m",
+        networth: "20.1 b",
         game: "GTA",
         playedby: "Tru3",
         weight: "185",
@@ -102,7 +102,7 @@ var characters = [
         birthday: new Date(1995, 04, 16, 09, 11, 69),
         employment: companies[0],
         gender: "Female",
-        networth: "1 b",
+        networth: "1.8 b",
         game: "GTA",
         playedby: "Jules",
         weight: "134",
@@ -272,7 +272,9 @@ var characters = [
         height: "6'0",
         eye: "null",
         hair: "null",
-        id: "1gGHJm"
+        id: "1gGHJm",
+        dead: true,
+        dateofdeath: new Date(2024, 05, 27, 12, 00, 00)
     },
     {
         fullname: "Elana May Smith",

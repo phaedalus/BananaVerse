@@ -114,7 +114,6 @@ function game_render(game) {
         deadButton.classList.remove("adba");
     } else if (game == "grb") {
         aliveButton.style.fontFamily = "euro";
-        deadButton.classList.add("hide");
         deadButton.classList.remove("adba");
     } else if (game == "acu") {
         deadButton.style.fontFamily = "assassin";
@@ -160,12 +159,6 @@ function lovearcade() {
         <br><br><br>
         <div class="love-arcade">
             <h1 id="love-title">Love Arcade</h1>
-            <select id="gameSelect" onchange="handleSelectChange()">
-                <option value="GTA">Grand Theft Auto V</option>
-                <option value="GRB">Ghost Recon Breakpoint</option>
-                <option value="ACU">Asssassin's Creed Unity</option>
-                <option value="RDR">Red Dead Redemption 2</option>
-            </select><br><br>
             <button id="runButton">Run It Back!</button>
             <p id="percent" class="compatibility"></p>
             <p id="compatibility" class="compatibility"></p>
@@ -174,14 +167,9 @@ function lovearcade() {
         </div>
     </center>`);
     
-    var gameSelect = document.getElementById("gameSelect");
     var runButton = document.getElementById("runButton");
 
-    if (gameSelect && runButton) {
-        gameSelect.addEventListener("change", function() {
-            generateCompatibility();
-        });
-
+    if (runButton) {
         runButton.addEventListener("click", function() {
             generateCompatibility();
         });
