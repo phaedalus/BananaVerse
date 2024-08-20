@@ -434,4 +434,5 @@ function isUsingComputer() {
     return false; // Return false to indicate it's not using a computer
   }
   
+  return !isMobile; // Return true for non-mobile (i.e., desktop) devices
 }

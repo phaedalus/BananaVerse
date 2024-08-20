@@ -76,6 +76,7 @@ body {
 /* Feed Styles */
 #feed {
   height: 100vh; 
+  overflow-y: auto;
 }
 
 .hide {
