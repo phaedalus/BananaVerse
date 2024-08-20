@@ -114,6 +114,7 @@ function game_render(game) {
         deadButton.classList.remove("adba");
     } else if (game == "grb") {
         aliveButton.style.fontFamily = "euro";
+        deadButton.style.fontFamily = "euro";
         deadButton.classList.remove("adba");
     } else if (game == "acu") {
         deadButton.style.fontFamily = "assassin";
@@ -209,11 +210,76 @@ function changelog() {
         <center>
             <br><br><br><br>
             <ul class="changelog">
-                <li><b>1.5.5h2 - Hotfix 2</b></li>
+                <li><b>1.5.6 - The Story Page</b></li>
                 <ul>
-                    <li>Fixed previous code errors and corrected the coloring issue for 'Alive' and 'Dead' statuses.</li>
+                    <li>Fixed the font bug on the 'Dead' button for Tom Clancy's Ghost Recon Breakpoint character page.</li>
+                    <li>Added a new feature called 'The Story' that will catch up or jog players' memories on each game's storyline.</li>
                 </ul>
             </ul>
+        </center>
+    `);
+}
+
+// Render Keyevents
+function theStory() {
+    selectSubItem(event);
+    extra_render(`
+        <center>
+            <br><br><br><br><br>
+            <h1 style="color: #ffcb3b"><strong>The Story</strong></h1>
+            <p style="color: #e8b935">(To catch up or jog your memory.)</p>
+            <button class="dark-mode-button" onclick="gtaStory()" style="color: white; font-family: pricedown; text-shadow: 1px 1px black;">Grand Theft Auto V</button><br>
+            <button class="dark-mode-button" onclick="grbStory()" style="color: white; font-family: euro; text-shadow: 1px 1px black;">Tom Clancy's Recon Breakpoint</button><br>
+            <button class="dark-mode-button" onclick="acuStory()" style="color: white; font-family: assassin; text-shadow: 1px 1px black;">Assassin's Creed Unity</button><br>
+            <button class="dark-mode-button" onclick="rdrStory()" style="color: white; font-family: rdr; text-shadow: 1px 1px black;">Red Dead Redemption 2</button>
+        </center>
+    `);
+}
+
+// Render GTA V Story
+function gtaStory() {
+    selectSubItem(event);
+    extra_render(`
+        <center>
+            <br><br><br><br><br>
+            <h1 style="color: white; font-family: pricedown; text-shadow: 1px 1px black;"><strong>Grand Theft Auto V's Story</strong></h1>
+            <button class="dark-mode-button" onclick="theStory()" style="color: white; font-family: pricedown; text-shadow: 1px 1px black;">Back</button>
+        </center>
+    `);
+}
+
+// Render GRB Story
+function grbStory() {
+    selectSubItem(event);
+    extra_render(`
+        <center>
+            <br><br><br><br><br>
+            <h1 style="color: white; font-family: euro; text-shadow: 1px 1px black;"><strong>Tom Clancy's Ghost Recon Breakpoint's Story</strong></h1>
+            <button class="dark-mode-button" onclick="theStory()" style="color: white; font-family: euro; text-shadow: 1px 1px black;">Back</button>
+        </center>
+    `);
+}
+
+// Render ACU Story
+function acuStory() {
+    selectSubItem(event);
+    extra_render(`
+        <center>
+            <br><br><br><br><br>
+            <h1 style="color: white; font-family: assassin; text-shadow: 1px 1px black;"><strong>Assassin's Creed Unity's Story</strong></h1>
+            <button class="dark-mode-button" onclick="theStory()" style="color: white; font-family: assassin; text-shadow: 1px 1px black;">Back</button>
+        </center>
+    `);
+}
+
+// Render RDR 2 Story
+function rdrStory() {
+    selectSubItem(event);
+    extra_render(`
+        <center>
+            <br><br><br><br><br>
+            <h1 style="color: white; font-family: rdr; text-shadow: 1px 1px black;"><strong>Red Dead Redemption 2's Story</strong></h1>
+            <button class="dark-mode-button" onclick="theStory()" style="color: white; font-family: rdr; text-shadow: 1px 1px black;">Back</button>
         </center>
     `);
 }
