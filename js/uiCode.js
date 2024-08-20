@@ -187,6 +187,11 @@ function changelog() {
         <center>
             <br><br><br><br>
             <ul class="changelog">
+                <li><b>1.5.4 - Small Profile Update 2</b></li>
+                <ul>
+                    <li>Changed the job output display to better accommodate all variables.</li>
+                    <li>Changed the colors of dead character profiles.</li>
+                </ul><br>
                 <li><b>1.5.3 - Small Profile Update/Bug Fix</b></li>
                 <ul>
                     <li>Added more colors to character stats in profiles for better visibility and overall aesthetic appeal.</li>

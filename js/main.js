@@ -26,9 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             li.innerHTML = `<i class="fa-solid ${icon}" style="font-size: 12px"></i> ${character.name.firstName} ${character.name.lastName}${skull}`;
         }
-        if (character.dead) {
-            li.style.color = "#ff4733";
-        }
         li.onclick = () => profileLoading(character);
         return li;
     }
@@ -198,15 +195,16 @@ function profileLoading(profile) {
         weight,
         height,
         game,
-        dead,
+        dead = false,
         dateofdeath,
         rawdeath,
         id
     } = profile;
 
     genderSymbol = "♂";
+    genderColor = "#14a5e3";
+    job = jobProcess(employment, dead);
 
-    const employmentName = typeof employment === "object" ? employment.name : employment;
     const age = calculateAge(dobRaw, game);
     const aged = calculateAgeAtDeath(game, dobRaw, rawdeath);
     const deathDate = game === "GTA" ? modifyEndingNumber(dateofdeath, "-") : modifyEndingNumber(dateofdeath, "+");
@@ -220,25 +218,27 @@ function profileLoading(profile) {
 
     if (gender == "Male") {
         genderSymbol = `<i class="fa-solid fa-mars" style="color: #14a5e3"></i>`;
+        genderColor = "#14a5e3";
     } else if (gender == "Female") {
         genderSymbol = `<i class="fa-solid fa-venus" style="color: #e016e0"></i>`;
+        genderColor = "#e016e0";
     }
 
     const details = dead ? `
-        <span style="color: #ff4733">
+        <span>
             <strong>${fullName} ${genderSymbol}</strong><br>
-            Lived until <strong>${aged}</strong> years of age<br>
-            Left this plane on <strong>${deathDate}</strong><br>
-            Born on <strong>${dob}</strong><br>
-            <strong>${employmentName}</strong> is what they did for a living<br>
-            Estimated worth <strong>${networth}</strong><br>
-            Acted & Created by <strong>${playedby}</strong><br>
-            <strong>${firstName}</strong> approximately weighed <strong>${weight} lbs</strong><br> standing at around <strong>${height}</strong><br>
+            Lived until <strong style="color: #f52f3c">${aged}</strong> years of age<br>
+            Left this plane on <strong style="color: #f52f3c">${deathDate}</strong><br>
+            Born on <strong style="color: ${genderColor}">${dob}</strong><br>
+            ${job}<br>
+            Estimated worth <strong style="color: #a813e8">${networth}</strong><br>
+            Acted & Created by <strong style="color: #14e35c">${playedby}</strong><br>
+            <strong>${firstName}</strong> approximately weighed <strong style="color: #42f5bf">${weight} lbs</strong><br> standing at around <strong style="color: #42f5bf">${height}</strong><br>
         </span>` : `
         <strong>${fullName} ${genderSymbol}</strong><br>
-        <strong style="color: #fa1e89">${age}</strong> years old as of <strong style="color: #fa1e89">${time_now}</strong><br>
-        Born on <strong style="color: #fa1e89">${dob}</strong><br>
-        <strong style="color: #b6e813">${employmentName}</strong> is what they do for a living<br>
+        <strong style="color: ${genderColor}">${age}</strong> years old as of <strong style="color: ${genderColor}">${time_now}</strong><br>
+        Born on <strong style="color: ${genderColor}">${dob}</strong><br>
+        ${job}<br>
         Estimated worth <strong style="color: #a813e8">${networth}</strong><br>
         Acted & Created by <strong style="color: #14e35c">${playedby}</strong><br>
         <strong>${firstName}</strong> approximately weighs <strong style="color: #42f5bf">${weight} lbs</strong><br> standing at around <strong style="color: #42f5bf">${height}</strong><br>`;
@@ -251,6 +251,24 @@ function profileLoading(profile) {
 document.getElementById("character-profile").addEventListener('click', () => {
     document.getElementById("character-profile").style.display = "none";
 });
+
+function jobProcess(job, dead) {
+    let final = "";
+    if (typeof job === "object" && job !== null) {
+        final = dead 
+            ? `They worked for <strong style="color: #b6e813">${job.name}</strong>` 
+            : `They work for <strong style="color: #b6e813">${job.name}</strong>`;
+    } else if (typeof job === "string" && job.length === 0) {
+        final = dead 
+            ? `<strong style="color: #b6e813">Pizza Delivery</strong> is what they did for a living` 
+            : `<strong style="color: #b6e813">Pizza Delivery</strong> is what they do for a living`;
+    } else {
+        final = dead 
+            ? `<strong style="color: #b6e813">${job}</strong> is what they did for a living` 
+            : `<strong style="color: #b6e813">${job}</strong> is what they do for a living`;
+    }
+    return final;
+}
 
 function calculateAge(dateString, game) {
     const birthDate = new Date(dateString);

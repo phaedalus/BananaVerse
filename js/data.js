@@ -7,7 +7,7 @@ var companies = [
         value: "1.06 b"
     },
     {
-        name: "",
+        name: "Placeholder",
         type: "Holding",
         founding: new Date(2020, 03, 12, 03, 12, 34),
         founder: "Lost to time",
