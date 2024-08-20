@@ -427,5 +427,11 @@ function loadCharacter(character) {
 function isUsingComputer() {
   const userAgent = navigator.userAgent;
   const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(userAgent);
-  return !isMobile;
+  const isFreeBSD = /FreeBSD/i.test(userAgent);
+  
+  // FreeBSD should be treated as mobile for this purpose
+  if (isFreeBSD) {
+    return false; // Return false to indicate it's not using a computer
+  }
+  
 }

@@ -187,6 +187,10 @@ function changelog() {
         <center>
             <br><br><br><br>
             <ul class="changelog">
+                <li><b>1.5.5h1 - Hotfix 2</b></li>
+                <ul>
+                    <li>Blacklisted FreeBSD from appearing as a desktop option.</li>
+                </ul><br>
                 <li><b>1.5.5 - Minor Update 2</b></li>
                 <ul>
                     <li>Added a switch to sort character names alphabetically.</li>
