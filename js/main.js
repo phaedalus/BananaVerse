@@ -30,21 +30,36 @@ document.addEventListener("DOMContentLoaded", function() {
         return li;
     }
 
-    function processCharacters(characters, game, aliveList, deadList) {
+    function processCharacters(characters, game, aliveList, deadList, sortBy = "lastName") {
+        console.log(sortBy);
         const filteredCharacters = characters.filter(character => character.game === game).map(loadCharacter);
 
-        // Separate and sort alive and dead characters
-        const aliveCharacters = filteredCharacters.filter(character => !character.dead).sort((a, b) => {
-            const nameA = `${a.name.firstName} ${a.name.lastName}`;
-            const nameB = `${b.name.firstName} ${b.name.lastName}`;
-            return nameA.localeCompare(nameB);
-        });
+        // Sorting logic based on the sortBy variable
+        const compareFunction = (a, b) => {
+            if (sortBy === 'alphabetical') {
+                const nameA = `${a.name.firstName} ${a.name.lastName}`.toLowerCase();
+                const nameB = `${b.name.firstName} ${b.name.lastName}`.toLowerCase();
+                return nameA.localeCompare(nameB);
+            } else { // Default to 'lastName'
+                const lastNameA = a.name.lastName.toLowerCase();
+                const lastNameB = b.name.lastName.toLowerCase();
+                return lastNameA.localeCompare(lastNameB);
+            }
+        };
 
-        const deadCharacters = filteredCharacters.filter(character => character.dead).sort((a, b) => {
-            const nameA = `${a.name.firstName} ${a.name.lastName}`;
-            const nameB = `${b.name.firstName} ${b.name.lastName}`;
-            return nameA.localeCompare(nameB);
-        });
+        // Separate and sort alive and dead characters
+        const aliveCharacters = filteredCharacters.filter(character => !character.dead).sort(compareFunction);
+        const deadCharacters = filteredCharacters.filter(character => character.dead).sort(compareFunction);
+
+        // Clear existing lists
+        aliveList.innerHTML = '';
+        deadList.innerHTML = '';
+
+        // Initialize variables to track oldest and youngest characters
+        let oldestCharacter = null;
+        let youngestCharacter = null;
+        const characterAges = [];
+        const birthMonths = [];
 
         // Process alive characters
         aliveCharacters.forEach(character => {
@@ -81,37 +96,30 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Process GTA characters
+    function updateSorting(sort) {
+        processCharacters(characters, "GTA", gtaListAlive, gtaListDead, sort);
+        processCharacters(characters, "GRB", grbListAlive, grbListDead, sort);
+        processCharacters(characters, "ACU", acuListAlive, acuListDead, sort);
+        processCharacters(characters, "RDR", rdrListAlive, rdrListDead, sort);
+    }
+
+    // Add event listener for checkbox
+    const sortCheckbox = document.getElementById("sort-checkbox");
+    sortCheckbox.addEventListener('change', function() {
+        if (this.checked == true) {
+            updateSorting("alphabetical");
+            game_render("gta");
+        } else if (this.checked == false) {
+            updateSorting("lastName");
+            game_render("gta");
+        }
+    })
+
+    // Initial rendering
     processCharacters(characters, "GTA", gtaListAlive, gtaListDead);
-
-    // Process GRB characters
     processCharacters(characters, "GRB", grbListAlive, grbListDead);
-
-    // Process ACU characters
     processCharacters(characters, "ACU", acuListAlive, acuListDead);
-
-    // Process RDR2 characters
     processCharacters(characters, "RDR", rdrListAlive, rdrListDead);
-
-    // Calculate most common age
-    const ageCounts = characterAges.reduce((counts, age) => {
-        counts[age] = (counts[age] || 0) + 1;
-        return counts;
-    }, {});
-
-    const mostCommonAge = Object.keys(ageCounts).reduce((a, b) => ageCounts[a] > ageCounts[b] ? a : b);
-    
-    // Calculate most and least common birth months
-    const monthCounts = birthMonths.reduce((counts, month) => {
-        counts[month] = (counts[month] || 0) + 1;
-        return counts;
-    }, {});
-
-    const mostCommonMonthIndex = Object.keys(monthCounts).reduce((a, b) => monthCounts[a] > monthCounts[b] ? a : b);
-    const leastCommonMonthIndex = Object.keys(monthCounts).reduce((a, b) => monthCounts[a] < monthCounts[b] ? a : b);
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const mostCommonMonth = monthNames[mostCommonMonthIndex];
-    const leastCommonMonth = monthNames[leastCommonMonthIndex];
 
     if (isUsingComputer()) {
       var itm1 = document.getElementById("gta-itm");
@@ -163,6 +171,71 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     }
 });
+
+function modifyEndingNumber(str, operation) {
+    // Match the ending number in the string
+    const regex = /(\d+)(?!.*\d)/;
+    const match = str.match(regex);
+    
+    if (match) {
+        // Extract the ending number
+        const endingNumber = parseInt(match[0], 10);
+        
+        // Modify the number based on the operation
+        const modifiedNumber = operation === '+' ? endingNumber + 1 : endingNumber - 1;
+        
+        // Replace the old number with the new number in the string
+        return str.replace(regex, modifiedNumber);
+    }
+    
+    // If no ending number is found, return the original string
+    return str;
+}
+
+function profileLoading(profile) {
+    const {
+        name: { fullName, firstName },
+        birthday: { paperNormal: dob, raw: dobRaw },
+        gender,
+        employment,
+        networth,
+        playedby,
+        weight,
+        height,
+        game,
+        dead = false,
+        dateofdeath,
+        rawdeath,
+        id
+    } = profile;
+
+    genderSymbol = "♂";
+    genderColor = "#14a5e3";
+    job = jobProcess(employment, dead);
+
+    const age = calculateAge(new Date(dobRaw));
+    const deathDate = dateofdeath ? new Date(dateofdeath).toLocaleDateString() : "N/A";
+    const profileHTML = `
+        <div class="profile-card" style="border: 2px solid ${genderColor}">
+            <h3 style="text-align:center">${firstName}</h3>
+            <p><b>Full Name:</b> ${fullName}</p>
+            <p><b>Game:</b> ${game}</p>
+            <p><b>Gender:</b> ${gender} ${genderSymbol}</p>
+            <p><b>Birthday:</b> ${dob}</p>
+            <p><b>Age:</b> ${age}</p>
+            <p><b>Height:</b> ${height || "N/A"}</p>
+            <p><b>Weight:</b> ${weight || "N/A"}</p>
+            <p><b>Net Worth:</b> ${networth || "N/A"}</p>
+            <p><b>Played By:</b> ${playedby || "N/A"}</p>
+            <p><b>Status:</b> ${dead ? `Dead (Died on ${deathDate})` : "Alive"}</p>
+            <p><b>Job:</b> ${job || "N/A"}</p>
+            <p><b>Unique ID:</b> ${id}</p>
+        </div>
+    `;
+
+    const profileElement = document.getElementById("profile");
+    profileElement.innerHTML = profileHTML;
+}
 
 function modifyEndingNumber(str, operation) {
     // Match the ending number in the string

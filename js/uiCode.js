@@ -187,6 +187,11 @@ function changelog() {
         <center>
             <br><br><br><br>
             <ul class="changelog">
+                <li><b>1.5.5 - Minor Update 2</b></li>
+                <ul>
+                    <li>Added a switch to sort character names alphabetically.</li>
+                    <li>Changed the default name display to sort by last name.</li>
+                </ul><br>
                 <li><b>1.5.4 - Small Profile Update 2</b></li>
                 <ul>
                     <li>Changed the job output display to better accommodate all variables.</li>
