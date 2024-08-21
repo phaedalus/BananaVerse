@@ -216,6 +216,23 @@ li {
   background-color: #121111;
 }
 
+.name-part {
+  margin: 0 5px;
+  font-size: 24px;
+  cursor: pointer;
+}
+        
+.lock-icon {
+  margin: 0 5px;
+  font-size: 20px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+        
+.locked {
+  color: #f39c12;
+}
+
 /* Love Arcade */
 .love-arcade {
   user-select: none;

@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function processCharacters(characters, game, aliveList, deadList, sortBy = "lastName") {
-        console.log(sortBy);
         const filteredCharacters = characters.filter(character => character.game === game).map(loadCharacter);
 
         // Sorting logic based on the sortBy variable

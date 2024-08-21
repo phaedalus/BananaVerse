@@ -193,13 +193,25 @@ function namegeneration() {
                 <option value="unisex">Unisex</option>
             </select><br>
             <button id="generateBtn">Generate New Name</button>
-            <strong><h1 id="fullName"></h1></strong>
+            <div>
+                <h1 id="fullName">
+                    <span id="firstName" class="name-part"></span>
+                    <i id="firstNameLock" class="fas fa-lock-open lock-icon"></i>
+                    <span id="middleName" class="name-part"></span>
+                    <i id="middleNameLock" class="fas fa-lock-open lock-icon"></i>
+                    <span id="lastName" class="name-part"></span>
+                    <i id="lastNameLock" class="fas fa-lock-open lock-icon"></i>
+                </h1>
+            </div>
         </div>
     </center>
     `);
 
     document.getElementById('generateBtn').addEventListener('click', generateAndDisplayName);
     document.getElementById('genderSelect').addEventListener('change', generateAndDisplayName);
+    document.getElementById('firstNameLock').addEventListener('click', () => toggleLock('firstName'));
+    document.getElementById('middleNameLock').addEventListener('click', () => toggleLock('middleName'));
+    document.getElementById('lastNameLock').addEventListener('click', () => toggleLock('lastName'));
     generateAndDisplayName();
 }
 
@@ -210,10 +222,9 @@ function changelog() {
         <center>
             <br><br><br><br>
             <ul class="changelog">
-                <li><b>1.5.6 - The Story Page</b></li>
+                <li><b>1.5.7 - The Name Generator Update</b></li>
                 <ul>
-                    <li>Fixed the font bug on the 'Dead' button for Tom Clancy's Ghost Recon Breakpoint character page.</li>
-                    <li>Added a new feature called 'The Story' that will catch up or jog players' memories on each game's storyline.</li>
+                    <li>Added locks to the name components to enable customized generation.</li>
                 </ul>
             </ul>
         </center>
