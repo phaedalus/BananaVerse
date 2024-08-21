@@ -220,6 +220,7 @@ li {
   margin: 0 5px;
   font-size: 24px;
   cursor: pointer;
+  color: white;
 }
         
 .lock-icon {
@@ -227,10 +228,7 @@ li {
   font-size: 20px;
   cursor: pointer;
   vertical-align: middle;
-}
-        
-.locked {
-  color: #f39c12;
+  color: white;
 }
 
 /* Love Arcade */

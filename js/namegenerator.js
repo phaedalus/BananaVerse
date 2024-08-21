@@ -148,34 +148,37 @@ const unisexNames = [
     "Ashton", "Ariel"
 ];
 
-// Initial state
 let generatedNames = [];
 let lockedParts = {
-    firstName: false,
-    middleName: false,
-    lastName: false
+    firstName: {
+        isLocked: false
+    },
+    middleName: {
+        isLocked: false
+    },
+    lastName: {
+        isLocked: false
+    }
 };
 
+// Function to generate a new name based on gender and locked states
 function generateName(gender) {
     let firstNameList, middleNameList;
 
     if (gender === 'male') {
         firstNameList = maleFirstNames;
         middleNameList = maleMiddleNames;
-        document.getElementById("fullName").style.color = "#24cbd4";
     } else if (gender === 'female') {
         firstNameList = femaleFirstNames;
         middleNameList = femaleMiddleNames;
-        document.getElementById("fullName").style.color = "#e35fc2";
     } else if (gender === 'unisex') {
         firstNameList = unisexNames;
         middleNameList = unisexNames;
-        document.getElementById("fullName").style.color = "#8495CB";
     }
 
-    let firstName = lockedParts.firstName ? document.getElementById('firstName').textContent : firstNameList[Math.floor(Math.random() * firstNameList.length)];
-    let middleName = lockedParts.middleName ? document.getElementById('middleName').textContent : middleNameList[Math.floor(Math.random() * middleNameList.length)];
-    let lastName = lockedParts.lastName ? document.getElementById('lastName').textContent : lastNames[Math.floor(Math.random() * lastNames.length)];
+    let firstName = lockedParts.firstName.isLocked ? document.getElementById('firstName').textContent : firstNameList[Math.floor(Math.random() * firstNameList.length)];
+    let middleName = lockedParts.middleName.isLocked ? document.getElementById('middleName').textContent : middleNameList[Math.floor(Math.random() * middleNameList.length)];
+    let lastName = lockedParts.lastName.isLocked ? document.getElementById('lastName').textContent : lastNames[Math.floor(Math.random() * lastNames.length)];
 
     return {
         firstName,
@@ -184,34 +187,71 @@ function generateName(gender) {
     };
 }
 
+// Function to generate and display a new name
 function generateAndDisplayName() {
     const genderSelect = document.getElementById('genderSelect');
     const gender = genderSelect.options[genderSelect.selectedIndex].value;
+
+    // Generate a new name based on the gender and locked states
     const nameParts = generateName(gender);
 
+    // Update the displayed name parts
     document.getElementById('firstName').textContent = nameParts.firstName;
     document.getElementById('middleName').textContent = nameParts.middleName;
     document.getElementById('lastName').textContent = nameParts.lastName;
 
-    updateLockIcons(); // Keep the locks updated after generating a new name
-}
-
-function toggleLock(part) {
-    lockedParts[part] = !lockedParts[part];
+    // Update lock icons
     updateLockIcons();
 }
 
+// Function to generate and display a new name only for the newly unlocked part
+function unlockPart(part) {
+    const genderSelect = document.getElementById('genderSelect');
+    const gender = genderSelect.options[genderSelect.selectedIndex].value;
+
+    // Generate a new name for the specific unlocked part
+    const nameParts = generateName(gender);
+
+    // Update the specific name part
+    if (part === 'firstName' && !lockedParts.firstName.isLocked) {
+        document.getElementById('firstName').textContent = nameParts.firstName;
+    } else if (part === 'middleName' && !lockedParts.middleName.isLocked) {
+        document.getElementById('middleName').textContent = nameParts.middleName;
+    } else if (part === 'lastName' && !lockedParts.lastName.isLocked) {
+        document.getElementById('lastName').textContent = nameParts.lastName;
+    }
+
+    // Update lock icons
+    updateLockIcons();
+}
+
+// Function to toggle lock state of a name part
+function toggleLock(part) {
+    const lockIcon = document.getElementById(`${part}Lock`);
+
+    if (lockedParts[part].isLocked) {
+        // When unlocking, generate a new name only for the unlocked part
+        unlockPart(part);
+    }
+
+    lockedParts[part].isLocked = !lockedParts[part].isLocked;
+
+    // Update the lock icon
+    updateLockIcons();
+}
+
+// Function to update lock icons
 function updateLockIcons() {
-    ['firstName', 'middleName', 'lastName'].forEach(part => {
+    Object.keys(lockedParts).forEach(part => {
         const lockIcon = document.getElementById(`${part}Lock`);
-        if (lockedParts[part]) {
+        const isLocked = lockedParts[part].isLocked;
+
+        if (isLocked) {
             lockIcon.classList.remove('fa-lock-open');
             lockIcon.classList.add('fa-lock');
-            lockIcon.classList.add('locked');
         } else {
             lockIcon.classList.remove('fa-lock');
             lockIcon.classList.add('fa-lock-open');
-            lockIcon.classList.remove('locked');
         }
     });
 }

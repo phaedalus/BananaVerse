@@ -196,10 +196,10 @@ function namegeneration() {
             <div>
                 <h1 id="fullName">
                     <span id="firstName" class="name-part"></span>
-                    <i id="firstNameLock" class="fas fa-lock-open lock-icon"></i>
+                    <i id="firstNameLock" class="fas fa-lock-open lock-icon"></i><br>
                     <span id="middleName" class="name-part"></span>
-                    <i id="middleNameLock" class="fas fa-lock-open lock-icon"></i>
-                    <span id="lastName" class="name-part"></span>
+                    <i id="middleNameLock" class="fas fa-lock-open lock-icon"></i><br>
+                    <span id="lastName" class="name-part lastName"></span>
                     <i id="lastNameLock" class="fas fa-lock-open lock-icon"></i>
                 </h1>
             </div>
@@ -222,9 +222,9 @@ function changelog() {
         <center>
             <br><br><br><br>
             <ul class="changelog">
-                <li><b>1.5.7 - The Name Generator Update</b></li>
+                <li><b>1.5.7h1 - The Name Generator Fix</b></li>
                 <ul>
-                    <li>Added locks to the name components to enable customized generation.</li>
+                    <li>Removed coloring due to significant bugs.</li>
                 </ul>
             </ul>
         </center>
