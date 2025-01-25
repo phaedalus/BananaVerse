@@ -1,0 +1,174 @@
+@font-face {
+    font-family: Raleway;
+    src: url('../font/Raleway-Regular.ttf');
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100vh;
+    font-family: Raleway;
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow: hidden;
+}
+
+#theme-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.bottom-bar button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.bottom-bar button:hover {
+    transform: scale(1.02);
+}
+
+.popup {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 8px;
+    display: none;
+    padding: 10px;
+    text-align: center;
+    width: 80%;
+}
+
+.popup p {
+    max-width: 10px 0;
+    font-size: 16px;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.popup p:hover {
+    cursor: pointer;
+}
+
+.centered-element {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+    height: max-content;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; 
+}
+
+li {
+    font-size: 13.5px;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+.list-container {
+    display: none;
+    margin-top: 10px;
+}
+
+.alive-dead-buttons {
+    padding: 12px 24px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+.inactive-button {
+    color: #444444;
+}
+
+.profile {
+    border-radius: 8px;
+    width: max-content;
+    height: max-content;
+    padding: 12px;
+}
+
+.profile:hover {
+    cursor: pointer;
+}
+
+.gender {
+    font-size: 17px;
+}
+
+.male {
+    color: #3db1e3;
+}
+
+.female {
+    color: #e667e1;
+}
+
+.dead {
+    color: #cc3945;
+}
+
+.job {
+    color: #b6cc37;
+}
+
+.networth {
+    color: #7537b3;
+}
+
+.player {
+    color: #46c93c;
+}
+
+.weight-height {
+    color: #3bd4d1;
+}
+
+.love-arcade {
+    color: #de576d;
+}
+
+.love-arcade button {
+    background-color: #de576d;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 12px;
+}
+
+.love-arcade button:hover {
+    cursor: pointer;
+}
