@@ -714,9 +714,7 @@ var characters = [
         weight: "200",
         height: "6'1",
         eye: "brown",
-        hair: "brown",
-        dead: true,
-        dateofdeath: new Date(2023, 01, 01, 12, 00, 00)
+        hair: "brown"
     },
     {
         fullname: "Paul Nelson",
