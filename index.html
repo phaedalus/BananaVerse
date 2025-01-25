@@ -1,52 +1,56 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-		<link rel="icon" type="image/x-icon" href="logo.ico">
-		<title>BananaVerse - 1.5.7h1</title>
-		<link rel="stylesheet" href="style.css">
-	</head>
-	<body onload="game_render('gta')">
-		<div id="feed"></div>
-		<div class="bottom-nav">
-	        <div class="nav-item" onclick="toggleMenu(this)" id="games">
-	            <i class="fa-solid fa-gamepad nav-icon"></i>
-	            <span class="nav-text" id="nav-games-text">Games</span>
-	            <div class="sub-menu">
-	                <div class="sub-item" onclick="game_render('gta')" id="gta-itm">Grand Theft Auto V</div>
-	                <div class="sub-item" onclick="game_render('grb')" id="grb-itm">Tom Clancy's Ghost Recon Breakpoint</div>
-	                <div class="sub-item" onclick="game_render('acu')" id="acu-itm">Assassin's Creed Unity</div>
-	                <div class="sub-item" onclick="game_render('rdr')" id="rdr-itm">Red Dead Redemption 2</div>
-	            </div>
-	        </div>
-	        <div class="nav-item" onclick="toggleMenu(this)" id="extras">
-	            <i class="fa-solid fa-bars nav-icon"></i>
-	            <span class="nav-text" id="nav-extras-text">Extras</span>
-	            <div class="sub-menu">
-	            	<div class="sub-item" onclick="theStory()">The Story</div>
-	                <div class="sub-item" onclick="lovearcade()" id="la-itm">Love Arcade</div>
-	                <div class="sub-item" onclick="namegeneration()" id="ng-itm">Name Generator</div>
-	                <div class="sub-item" onclick="changelog()" id="c-itm">Changelog</div>
-	                <div class="sub-item">Alphabetical Names: <input type="checkbox" id="sort-checkbox"></div>
-	            </div>
-	        </div>
-	    </div>
-	    <ul id="characters-gta-alive" class="hide"></ul>
-	    <ul id="characters-grb-alive" class="hide"></ul>
-	    <ul id="characters-gta-dead" class="hide"></ul>
-	    <ul id="characters-grb-dead" class="hide"></ul>
-	    <ul id="characters-rdr-alive" class="hide"></ul>
-	    <ul id="characters-acu-alive" class="hide"></ul>
-	    <ul id="characters-rdr-dead" class="hide"></ul>
-	    <ul id="characters-acu-dead" class="hide"></ul>
-		<div class="character-profile" id="character-profile"></div>
-		<!--<script defer type="text/javascript" src="background.js"></script>-->
-		<script defer type="text/javascript" src="./js/data.js"></script>
-		<script type="text/javascript" src="./js/main.js"></script>
-		<script type="text/javascript" src="./js/dataFormat.js"></script>
-		<script type="text/javascript" src="./js/uiCode.js"></script>
-		<script type="text/javascript" src="./js/namegenerator.js"></script>
-		<script type="text/javascript" src="./js/lovegen.js"></script>
-	</body>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="logo.ico">
+        <title>BananaVerse - 2.0</title>
+        <!-- External Imports -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/essentials.css">
+        <link rel="stylesheet" href="css/essentials-dark.css" id="theme-stylesheet">
+        <!-- Data Set -->
+         <script src="js/essential/data.js"></script>
+    </head>
+    <body onload="initalLoad()">
+        <!-- App -->
+        <div class="centered-element" id="display"></div>
+        <!-- UI -->
+        <div class="popup" id="games-popup">
+            <p id="gta-5">Grand Theft Auto V</p>
+            <p id="grb">Tom Clancy's Ghost Recon Breakpoint</p>
+            <p id="acu">Assassin's Creed Unity</p>
+            <p id="rdr">Red Dead Redemption 2</p>
+        </div>
+        <div class="popup" id="extras-popup">
+            <i id="theme-toggle" class="fas fa-moon"></i>
+            <p id="love-arcade">Love Arcade</p>
+            <p id="name-generator">Name Generator</p>
+            <p id="changelog">Changelog</p>
+        </div>
+        <div class="bottom-bar">
+            <button id="games-btn">
+                <i class="fas fa-gamepad"></i>
+            </button>
+            <button id="extras-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- JS Links -->
+        <script src="js/theme-toggle.js"></script>
+        <script src="js/ui.js"></script>
+        <script src="js/extra/changelog.js"></script>
+        <script src="js/essential/read-data.js"></script>
+        <script src="js/essential/profile-vals.js"></script>
+        <script src="js/essential/profile-render.js"></script>
+        <script src="js/essential/render-game.js"></script>
+        <script src="js/essential/display-template.js"></script>
+        <script src="js/game/gta5.js"></script>
+        <script src="js/game/grb.js"></script>
+        <script src="js/game/rdr.js"></script>
+        <script src="js/game/acu.js"></script>
+        <script src="js/extra/lovearcade.js"></script>
+        <script src="js/extra/namegenerator.js"></script>
+    </body>
 </html>
