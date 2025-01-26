@@ -883,7 +883,7 @@ var characters = [
         weight: "185",
         height: "6'0",
         eye: "brown",
-        hair: "black",
+        hair: "black"
     },
     {
         fullname: "Ethan Christopher Rivera",
@@ -896,7 +896,7 @@ var characters = [
         weight: "175.6",
         height: "5'8",
         eye: "blue",
-        hair: "brown",
+        hair: "brown"
     },
     {
         fullname: "Logan Matthew Panisi",
@@ -909,6 +909,6 @@ var characters = [
         weight: "200",
         height: "6'1",
         eye: "green",
-        hair: "brown",
+        hair: "brown"
     }
 ];
