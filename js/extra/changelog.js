@@ -2,9 +2,10 @@ function changelog() {
     hidePopup();
     document.getElementById("display").innerHTML = `
         <center>
-            <h2>2.1 - You Can Edit It?!</h2>
+            <h2>2.2 - New Frontiers</h2>
             <ul>
-                <li>Now users can edit the names, provided by the name generator!</li>
+                <li>Alias' make the return!</li>
+                <li>Support for GTA5 PS5 Version!</li>
             </ul>
         </center>
     `

@@ -27,6 +27,10 @@ function calculateCharacterAge(character, game) {
         referenceYear -= 1;
     }
 
+    if (game === 'GTA5P5') {
+        referenceYear -= 8;
+    }
+
     let ageAtDeathOrReference = referenceYear - birthYear - 
         ((referenceMonth < birthMonth || (referenceMonth === birthMonth && referenceDay < birthDay)) ? 1 : 0);
 

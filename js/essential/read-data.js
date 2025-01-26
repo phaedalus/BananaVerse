@@ -12,7 +12,8 @@ function readCharacterData(character) {
         eye: character.eye,
         hair: character.hair,
         dead: character.dead,
-        dateofdeath: character.dateofdeath
+        dateofdeath: character.dateofdeath,
+        alias: character.alias
     }
 }
 
