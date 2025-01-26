@@ -243,6 +243,20 @@ function updateLockIcons() {
     });
 }
 
+function enableEditing(part) {
+    const element = document.getElementById(part);
+
+    element.setAttribute('contenteditable', true);
+    element.focus();
+
+    element.addEventListener('blur', () => {
+        element.setAttribute('contenteditable', false);
+        if (!lockedParts[part].isLocked) {
+            toggleLock(part); // Automatically lock after editing
+        }
+    });
+}
+
 function namegenerator() {
     hidePopup();
     document.getElementById("display").innerHTML = `
@@ -258,22 +272,40 @@ function namegenerator() {
                 <button id="generateBtn">Generate New Name</button>
                 <div>
                     <h1 id="fullName">
-                        <span id="firstName" class="name-part"></span>
+                        <span id="firstName" class="name-part" contenteditable="true"></span>
                         <i id="firstNameLock" class="fas fa-lock-open lock-icon"></i><br>
-                        <span id="middleName" class="name-part"></span>
+                        <span id="middleName" class="name-part" contenteditable="true"></span>
                         <i id="middleNameLock" class="fas fa-lock-open lock-icon"></i><br>
-                        <span id="lastName" class="name-part lastName"></span>
+                        <span id="lastName" class="name-part lastName" contenteditable="true"></span>
                         <i id="lastNameLock" class="fas fa-lock-open lock-icon"></i>
                     </h1>
                 </div>
             </div>
         </center>
     `;
+
     document.getElementById('generateBtn').addEventListener('click', generateAndDisplayName);
     document.getElementById('genderSelect').addEventListener('change', generateAndDisplayName);
     document.getElementById('firstNameLock').addEventListener('click', () => toggleLock('firstName'));
     document.getElementById('middleNameLock').addEventListener('click', () => toggleLock('middleName'));
     document.getElementById('lastNameLock').addEventListener('click', () => toggleLock('lastName'));
+
+    document.querySelectorAll('.name-part').forEach(namePart => {
+        namePart.addEventListener('keydown', function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                namePart.blur();
+            }
+        });
+
+        // Handle empty values on blur
+        namePart.addEventListener('blur', function () {
+            if (namePart.textContent.trim() === '') {
+                namePart.textContent = 'Blank';
+            }
+        });
+    });
+
     generateAndDisplayName();
 }
 
