@@ -2,10 +2,9 @@ function changelog() {
     hidePopup();
     document.getElementById("display").innerHTML = `
         <center>
-            <h2>2.2 - New Frontiers</h2>
+            <h2>2.3 - HEX</h2>
             <ul>
-                <li>Alias' make the return!</li>
-                <li>Support for GTA5 PS5 Version!</li>
+                <li>New Program Called HEX For Character Data!</li>
             </ul>
         </center>
     `
