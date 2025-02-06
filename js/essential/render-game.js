@@ -4,20 +4,39 @@ function renderGame(gameAbr) {
     let gameAliveList = document.getElementById(`${gameAbr}-Alive`);
     let gameDeadList = document.getElementById(`${gameAbr}-Dead`);
     
-    gameA.forEach((character, index) => {
+    gameAliveList.innerHTML = '';
+    gameDeadList.innerHTML = '';
+
+    gameA.forEach((character) => {
         let li = document.createElement("li");
-        li.innerText = character.alias 
+        let nameText = character.alias 
             ? `${character.fullname} (${character.alias})` 
             : character.fullname;
+
+        li.dataset.fullname = character.fullname || "";
+        li.dataset.gender = character.gender || "";
+        li.dataset.playedby = character.playedby || "";
+        li.dataset.employment = character.employment || "";
+        li.dataset.alias = character.alias || "";
+
+        li.innerText = nameText;
         li.onclick = () => openProfile(character);
         gameAliveList.appendChild(li);
     });
 
-    gameD.forEach((character, index) => {
+    gameD.forEach((character) => {
         let li = document.createElement("li");
-        li.innerText = character.alias 
+        let nameText = character.alias 
             ? `${character.fullname} (${character.alias})` 
             : character.fullname;
+
+        li.dataset.fullname = character.fullname || "";
+        li.dataset.gender = character.gender || "";
+        li.dataset.playedby = character.playedby || "";
+        li.dataset.employment = character.employment || "";
+        li.dataset.alias = character.alias || "";
+
+        li.innerText = nameText;
         li.onclick = () => openProfile(character);
         gameDeadList.appendChild(li);
     });
