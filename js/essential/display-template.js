@@ -7,6 +7,7 @@ function displayCharacters(gameAbr) {
         </center>
         <br><br>
         <center>
+            <input type="text" id="searchBar" class="search-bar" placeholder="Search character..." oninput="filterCharacters('${gameAbr}')">
             <ul id="${gameAbr}-Alive" style="display: none;"></ul>
             <ul id="${gameAbr}-Dead" style="display: none;"></ul>
         </center>
@@ -32,4 +33,35 @@ function displayCharacters(gameAbr) {
     });
 
     document.getElementById('aliveButton').click();
+}
+
+function filterCharacters(gameAbr) {
+    let query = document.getElementById("searchBar").value.toLowerCase();
+
+    ['Alive', 'Dead'].forEach(status => {
+        let list = document.getElementById(`${gameAbr}-${status}`);
+        let items = list.getElementsByTagName("li");
+
+        for (let item of items) {
+            let text = (item.dataset.fullname || "").toLowerCase();
+            let gender = (item.dataset.gender || "").toLowerCase();
+            let playedby = (item.dataset.playedby || "").toLowerCase();
+            let employment = (item.dataset.employment || "").toLowerCase();
+            let alias = (item.dataset.alias || "").toLowerCase();
+
+            let matches = text.includes(query) || 
+                          gender.includes(query) || 
+                          playedby.includes(query) ||
+                          employment.includes(query) ||
+                          alias.includes(query);
+
+            if (matches) {
+                let highlightedText = item.dataset.fullname.replace(new RegExp(query, "gi"), (match) => `<b>${match}</b>`);
+                item.innerHTML = highlightedText;
+                item.style.display = "";
+            } else {
+                item.style.display = "none";
+            }
+        }
+    });
 }

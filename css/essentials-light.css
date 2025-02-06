@@ -108,3 +108,8 @@ body {
     color: #aaa;
     cursor: not-allowed;
 }
+
+.search-bar {
+    background: #dbd9d3;
+    color: #333;
+}
