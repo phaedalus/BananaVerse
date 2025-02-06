@@ -1,20 +1,41 @@
-function readCharacterData(character) {
-    return {
-        fullname: character.fullname,
-        birthday: character.birthday,
-        employment: character.employment,
-        gender: character.gender,
-        networth: character.networth,
-        game: character.game,
-        playedby: character.playedby,
-        weight: character.weight,
-        height: character.height,
-        eye: character.eye,
-        hair: character.hair,
-        dead: character.dead,
-        dateofdeath: character.dateofdeath,
-        alias: character.alias
+let sortedCharacters = {};
+
+async function loadCharacterData() {
+    try {
+        const response = await fetch('https://character-submit.glitch.me/data');
+        const data = await response.json();
+
+        console.log(data);
+
+        if (Array.isArray(data.characters)) {
+            sortedCharacters = sortCharactersByGame(data.characters);
+        } else {
+            console.error('Characters data is not an array:', data.characters);
+        }
+    } catch (error) {
+        console.error('Error loading character data:', error);
     }
+}
+
+function readCharacterData(characters) {
+    return characters.map(character => {
+        return {
+            fullname: character.fullname,
+            birthday: character.birthday,
+            employment: character.employment,
+            gender: character.gender,
+            networth: character.networth,
+            game: character.game,
+            playedby: character.playedby,
+            weight: character.weight,
+            height: character.height,
+            eye: character.eye,
+            hair: character.hair,
+            dead: character.dead,
+            dateofdeath: character.dateofdeath,
+            alias: character.alias
+        };
+    });
 }
 
 function sortCharactersByGame(characters) {
@@ -50,14 +71,4 @@ function sortCharactersByGame(characters) {
     return sortedData;
 }
 
-function readCompanyData(company) {
-    return {
-        company: company.name,
-        type: company.type,
-        founding: company.founding,
-        founder: company.founder,
-        value: company.value
-    }
-}
-
-const sortedCharacters = sortCharactersByGame(characters);
+loadCharacterData();
