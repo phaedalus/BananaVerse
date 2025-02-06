@@ -1,5 +1,5 @@
 function hex() {
-    window.location.href = "https://character-submit.glitch.me/";
+    window.location.href = "https://ccse.onrender.com/";
 }
 
 const hexButton = document.getElementById("HEX");

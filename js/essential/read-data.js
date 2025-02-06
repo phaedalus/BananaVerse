@@ -2,15 +2,13 @@ let sortedCharacters = {};
 
 async function loadCharacterData() {
     try {
-        const response = await fetch('https://character-submit.glitch.me/data');
+        const response = await fetch('https://ccse.onrender.com/data');
         const data = await response.json();
 
-        console.log(data);
-
-        if (Array.isArray(data.characters)) {
+        if (data && Array.isArray(data.characters)) {
             sortedCharacters = sortCharactersByGame(data.characters);
         } else {
-            console.error('Characters data is not an array:', data.characters);
+            console.error('Invalid characters data or not an array:', data.characters);
         }
     } catch (error) {
         console.error('Error loading character data:', error);
@@ -18,6 +16,11 @@ async function loadCharacterData() {
 }
 
 function readCharacterData(characters) {
+    if (!Array.isArray(characters)) {
+        console.error('Expected an array of characters:', characters);
+        return [];
+    }
+
     return characters.map(character => {
         return {
             fullname: character.fullname,
@@ -42,7 +45,13 @@ function sortCharactersByGame(characters) {
     const sortedData = {};
 
     characters.forEach(character => {
-        const characterData = readCharacterData(character);
+        // Ensure the character is valid
+        if (!character || !character.game) {
+            console.warn('Skipping invalid character data:', character);
+            return;
+        }
+
+        const characterData = readCharacterData([character])[0];  // Handle each character as an array for readCharacterData
         const game = characterData.game;
 
         if (!sortedData[game]) {
@@ -70,5 +79,3 @@ function sortCharactersByGame(characters) {
 
     return sortedData;
 }
-
-loadCharacterData();
