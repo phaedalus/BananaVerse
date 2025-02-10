@@ -13,13 +13,17 @@ function renderGame(gameAbr) {
             ? `${character.fullname} (${character.alias})` 
             : character.fullname;
 
+        if (character.retired) {
+            nameText += ' <i class="fa-solid fa-umbrella-beach"></i>';
+        }
+
         li.dataset.fullname = character.fullname || "";
         li.dataset.gender = character.gender || "";
         li.dataset.playedby = character.playedby || "";
         li.dataset.employment = character.employment || "";
         li.dataset.alias = character.alias || "";
 
-        li.innerText = nameText;
+        li.innerHTML = nameText;
         li.onclick = () => openProfile(character);
         gameAliveList.appendChild(li);
     });
@@ -29,6 +33,10 @@ function renderGame(gameAbr) {
         let nameText = character.alias 
             ? `${character.fullname} (${character.alias})` 
             : character.fullname;
+        
+        if (character.retired) {
+            nameText += ' <i class="fa-solid fa-umbrella-beach"></i>';
+        }
 
         li.dataset.fullname = character.fullname || "";
         li.dataset.gender = character.gender || "";

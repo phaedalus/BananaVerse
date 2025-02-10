@@ -69,7 +69,7 @@ function formatDate(dateString) {
                    day === 2 || day === 22 ? "nd" :
                    day === 3 || day === 23 ? "rd" : "th";
 
-    return `${month} ${day}${suffix}, ${year}`;
+    return `${month} ${day+1}${suffix}, ${year}`;
 }
 
 function calcCurrentAge(character) {
