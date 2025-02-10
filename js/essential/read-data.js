@@ -36,7 +36,8 @@ function readCharacterData(characters) {
             hair: character.hair,
             dead: character.dead,
             dateofdeath: character.dateofdeath,
-            alias: character.alias
+            alias: character.alias,
+            retired: character.retired
         };
     });
 }
