@@ -21,7 +21,9 @@ let maleFirstNames = [
     "Johnny", "Bradley", "Nathaniel", "Craig", "Tony",
     "Mason", "Curtis", "Victor", "Martin", "Manuel",
     "Oliver", "Theodore", "Earl", "Leonard", "Clarence",
-    "Rodney", "Wesley", "Micheal", "Lucas", "Jamie"
+    "Rodney", "Wesley", "Micheal", "Lucas", "Jamie",
+    "Isaiah", "Elijah", "Grayson", "Owen", "Xander",
+    "Luca", "Gage", "Jaxon", "Axel", "Blake"
 ];
 
 const femaleFirstNames = [
@@ -45,7 +47,8 @@ const femaleFirstNames = [
     "Natalie", "Lori", "Tiffany", "Alexis", "Kayla",
     "Charlotte", "Sandy", "Molly", "Leah", "Melanie",
     "Veronica", "Jill", "Wanda", "Connie", "Carrie",
-    "Rachel", "Lynn", "Ruth", "Carla", "Bonnie"
+    "Rachel", "Lynn", "Ruth", "Carla", "Bonnie",
+    "Scarlett", "Zoe", "Aria", "Delilah", "Savannah"
 ];
 
 const lastNames = [
@@ -69,7 +72,8 @@ const lastNames = [
     "Bennett", "Gray", "Mendoza", "Ruiz", "Hughes",
     "Price", "Alvarez", "Castillo", "Sanders", "Patel",
     "Myers", "Long", "Ross", "Foster", "Jimenez",
-    "Powell", "Jenkins", "Perry", "Russell", "Sullivan"
+    "Powell", "Jenkins", "Perry", "Russell", "Sullivan",
+    "Vega", "Hawkins", "Mason", "Warren", "Douglas"
 ];
 
 const maleMiddleNames = [
@@ -92,7 +96,8 @@ const maleMiddleNames = [
     "Liam", "Max", "Miles", "Nolan", "Owen",
     "Parker", "Reed", "Shane", "Spencer", "Troy",
     "Tyler", "Victor", "Wesley", "Zachary", "Gavin",
-    "Hayden", "Jared", "Julian", "Kirk", "Marshall"
+    "Hayden", "Jared", "Julian", "Kirk", "Marshall",
+    "Zane", "Caden", "Jasper", "Brody", "Landon"
 ];
 
 const femaleMiddleNames = [
@@ -129,23 +134,7 @@ const unisexNames = [
     "Rory", "Spencer", "Reagan", "Terry", "Shay",
     "Jamie", "Ashton", "Ariel", "Dylan", "Taylor",
     "Alexis", "Jordan", "Sage", "Skyler", "Quinn",
-    "Harper", "Bailey", "Rowan", "Finley", "Justice",
-    "Kai", "Micah", "Jaden", "Phoenix", "Emerson",
-    "Hayden", "Parker", "Morgan", "Drew", "Jesse",
-    "Ellis", "Cameron", "Tatum", "Spencer", "Reagan",
-    "Shay", "Jamie", "Ashton", "Ariel", "Taylor",
-    "Jordan", "Sage", "Skyler", "Quinn", "Harper",
-    "Bailey", "Rowan", "Finley", "Justice", "Kai",
-    "Micah", "Jaden", "Phoenix", "Emerson", "Hayden",
-    "Parker", "Morgan", "Drew", "Jesse", "Ellis",
-    "Cameron", "Tatum", "Spencer", "Reagan", "Shay",
-    "Jamie", "Ashton", "Ariel", "Taylor", "Jordan",
-    "Sage", "Skyler", "Quinn", "Harper", "Bailey",
-    "Rowan", "Finley", "Justice", "Kai", "Micah",
-    "Jaden", "Phoenix", "Emerson", "Hayden", "Parker",
-    "Morgan", "Drew", "Jesse", "Ellis", "Cameron",
-    "Tatum", "Spencer", "Reagan", "Shay", "Jamie",
-    "Ashton", "Ariel"
+    "Harper", "Bailey", "Rowan", "Finley", "Hayden"
 ];
 
 let generatedNames = [];
