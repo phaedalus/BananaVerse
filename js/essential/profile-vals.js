@@ -83,13 +83,7 @@ function calcCurrentAge(character) {
 }
 
 function jobProcess(character) {
-    if (typeof character.employment === "object" && character.employment !== null) {
-        if (character.dead) {
-            return `They worked for <strong class="job">${character.employment.name}</strong>`;
-        } else {
-            return `They work for <strong class="job">${character.employment.name}</strong>`;
-        }
-    } else if (typeof character.employment === "string" && character.employment.length === 0) {
+    if (typeof character.employment === "string" && character.employment.length === 0) {
         if (character.dead) {
             return `<strong class="job">Pizza Delivery</strong> is what they did for a living.`;
         } else {
@@ -97,9 +91,17 @@ function jobProcess(character) {
         }
     } else {
         if (character.dead) {
-            return `<strong class="job">${character.employment}</strong> is what they did for a living.`
+            if (character.retired) {
+                return `They were <strong class="job">Retired.</strong>`
+            } else {
+                return `<strong class="job">${character.employment}</strong> is what they did for a living.`;
+            }
         } else {
-            return `<strong class="job">${character.employment}</strong> is what they do for a living.`
+            if (character.retired) {
+                return `They are <strong class="job">Retired.</strong>`
+            } else {
+                return `<strong class="job">${character.employment}</strong> is what they do for a living.`
+            }
         }
     }
 }

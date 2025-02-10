@@ -1,9 +1,13 @@
 function displayCharacters(gameAbr) {
     hidePopup();
+
+    let hasAlive = sortedCharacters[gameAbr].alive.length > 0;
+    let hasDead = sortedCharacters[gameAbr].dead.length > 0;
+
     document.getElementById("display").innerHTML = `
         <center>
-            <button id="aliveButton" class="alive-dead-buttons">Alive</button>
-            <button id="deadButton" class="alive-dead-buttons">Dead</button>
+            ${hasAlive ? '<button id="aliveButton" class="alive-dead-buttons">Alive</button>' : ''}
+            ${hasDead ? '<button id="deadButton" class="alive-dead-buttons">Dead</button>' : ''}
         </center>
         <br><br>
         <center>
@@ -14,25 +18,33 @@ function displayCharacters(gameAbr) {
     `;
     renderGame(gameAbr);
 
-    document.getElementById('aliveButton').addEventListener('click', function() {
-        document.getElementById(`${gameAbr}-Alive`).style.display = 'block';
-        document.getElementById(`${gameAbr}-Dead`).style.display = 'none';
-        document.getElementById('aliveButton').classList.add('active-button');
-        document.getElementById('deadButton').classList.remove('active-button');
-        document.getElementById('deadButton').classList.add('inactive-button');
-        document.getElementById('aliveButton').classList.remove('inactive-button');
-    });
+    if (hasAlive) {
+        document.getElementById('aliveButton').addEventListener('click', function() {
+            document.getElementById(`${gameAbr}-Alive`).style.display = 'block';
+            document.getElementById(`${gameAbr}-Dead`).style.display = 'none';
+            document.getElementById('aliveButton').classList.add('active-button');
+            document.getElementById('deadButton').classList.remove('active-button');
+            document.getElementById('deadButton').classList.add('inactive-button');
+            document.getElementById('aliveButton').classList.remove('inactive-button');
+        });
+    }
 
-    document.getElementById('deadButton').addEventListener('click', function() {
-        document.getElementById(`${gameAbr}-Alive`).style.display = 'none';
-        document.getElementById(`${gameAbr}-Dead`).style.display = 'block';
-        document.getElementById('deadButton').classList.add('active-button');
-        document.getElementById('aliveButton').classList.remove('active-button');
-        document.getElementById('aliveButton').classList.add('inactive-button');
-        document.getElementById('deadButton').classList.remove('inactive-button');
-    });
+    if (hasDead) {
+        document.getElementById('deadButton').addEventListener('click', function() {
+            document.getElementById(`${gameAbr}-Alive`).style.display = 'none';
+            document.getElementById(`${gameAbr}-Dead`).style.display = 'block';
+            document.getElementById('deadButton').classList.add('active-button');
+            document.getElementById('aliveButton').classList.remove('active-button');
+            document.getElementById('aliveButton').classList.add('inactive-button');
+            document.getElementById('deadButton').classList.remove('inactive-button');
+        });
+    }
 
-    document.getElementById('aliveButton').click();
+    if (hasAlive) {
+        document.getElementById('aliveButton').click();
+    } else if (hasDead) {
+        document.getElementById('deadButton').click();
+    }
 }
 
 function filterCharacters(gameAbr) {
