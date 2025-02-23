@@ -18,32 +18,32 @@ function displayCharacters(gameAbr) {
     `;
     renderGame(gameAbr);
 
-    if (hasAlive) {
+    if (hasAlive && document.getElementById('aliveButton')) {
         document.getElementById('aliveButton').addEventListener('click', function() {
             document.getElementById(`${gameAbr}-Alive`).style.display = 'block';
             document.getElementById(`${gameAbr}-Dead`).style.display = 'none';
             document.getElementById('aliveButton').classList.add('active-button');
-            document.getElementById('deadButton').classList.remove('active-button');
-            document.getElementById('deadButton').classList.add('inactive-button');
+            document.getElementById('deadButton')?.classList.remove('active-button');
+            document.getElementById('deadButton')?.classList.add('inactive-button');
             document.getElementById('aliveButton').classList.remove('inactive-button');
         });
     }
 
-    if (hasDead) {
+    if (hasDead && document.getElementById('deadButton')) {
         document.getElementById('deadButton').addEventListener('click', function() {
             document.getElementById(`${gameAbr}-Alive`).style.display = 'none';
             document.getElementById(`${gameAbr}-Dead`).style.display = 'block';
             document.getElementById('deadButton').classList.add('active-button');
-            document.getElementById('aliveButton').classList.remove('active-button');
-            document.getElementById('aliveButton').classList.add('inactive-button');
+            document.getElementById('aliveButton')?.classList.remove('active-button');
+            document.getElementById('aliveButton')?.classList.add('inactive-button');
             document.getElementById('deadButton').classList.remove('inactive-button');
         });
     }
 
     if (hasAlive) {
-        document.getElementById('aliveButton').click();
+        document.getElementById('aliveButton')?.click();
     } else if (hasDead) {
-        document.getElementById('deadButton').click();
+        document.getElementById('deadButton')?.click();
     }
 }
 
