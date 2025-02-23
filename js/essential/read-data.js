@@ -52,7 +52,7 @@ function sortCharactersByGame(characters) {
             return;
         }
 
-        const characterData = readCharacterData([character])[0];  // Handle each character as an array for readCharacterData
+        const characterData = readCharacterData([character])[0];
         const game = characterData.game;
 
         if (!sortedData[game]) {

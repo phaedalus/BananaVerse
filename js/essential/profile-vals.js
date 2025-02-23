@@ -14,9 +14,9 @@ function calculateCharacterAge(character, game) {
     const birthYear = birthday.getFullYear();
     const birthMonth = birthday.getMonth();
     const birthDay = birthday.getDate();
-
-    if (character.died) {
-        referenceDate = new Date(character.dateOfDeath);
+    
+    if (character.dead) {
+        referenceDate = new Date(character.dateofdeath);
     }
 
     let referenceYear = referenceDate.getFullYear();
@@ -31,10 +31,10 @@ function calculateCharacterAge(character, game) {
         referenceYear -= 8;
     }
 
-    let ageAtDeathOrReference = referenceYear - birthYear - 
+    let ageAtDeath = referenceYear - birthYear - 
         ((referenceMonth < birthMonth || (referenceMonth === birthMonth && referenceDay < birthDay)) ? 1 : 0);
 
-    return ageAtDeathOrReference;
+    return ageAtDeath;
 }
 
 function ageOutput(character) {
@@ -174,6 +174,8 @@ function convertHeightFromString(heightStr) {
   
     const usesMetric = metricRegions.some(metricRegion => region.startsWith(metricRegion));
   
+    heightStr = heightStr.replace(/[’‘]/g, "'");
+  
     const feetInchesMatch = heightStr.match(/^(\d+)'(\d+)$/);
     
     if (!feetInchesMatch) {
@@ -191,4 +193,4 @@ function convertHeightFromString(heightStr) {
     } else {
       return `${feet}'${inches}`;
     }
-}  
+}

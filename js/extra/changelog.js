@@ -1,11 +1,15 @@
 function changelog() {
     hidePopup();
     document.getElementById("display").innerHTML = `
-        <center>
-            <h2>2.6 - Talios</h2>
+        <center style="user-select: none;">
+            <h2>2.7 - Uranus</h2>
             <ul>
-                <li>Name Generator has a much larger data set allowing more names!</li>
-                <li>HEX renamed to CCSE</li>
+                <li>Fixed annoying height input issues—no more hassle!</li>
+                <li>Improved performance: code now runs 0.5ms faster!</li>
+                <li>Death Age now displays correctly.</li>
+                <li>Routine bug fixes and optimizations.</li>
+                <li>ENOS feature added for enhanced functionality.</li>
+                <li>Thanks for reading! Stay tuned for more updates :)</li>
             </ul>
         </center>
     `
