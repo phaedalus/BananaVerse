@@ -2,14 +2,11 @@ function changelog() {
     hidePopup();
     document.getElementById("display").innerHTML = `
         <center style="user-select: none;">
-            <h2>2.7 - Uranus</h2>
+            <h2>2.8 - Venus</h2>
             <ul>
-                <li>Fixed annoying height input issues—no more hassle!</li>
-                <li>Improved performance: code now runs 0.5ms faster!</li>
-                <li>Death Age now displays correctly.</li>
-                <li>Routine bug fixes and optimizations.</li>
-                <li>ENOS feature added for enhanced functionality.</li>
-                <li>Thanks for reading! Stay tuned for more updates :)</li>
+                <li>Optimized project structure for the profile update.</li>
+                <li>Version number now displayed in the bottom left corner.</li>
+                <li>Thanks for reading—stay tuned for more updates! :)</li>
             </ul>
         </center>
     `
