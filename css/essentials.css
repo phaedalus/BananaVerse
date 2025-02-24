@@ -182,3 +182,14 @@ li:hover {
     font-size: 16px;
     outline: none;
 }
+
+.version {
+    position: fixed;
+    bottom: 6.5%;
+    left: 0.2%;
+}
+
+.version-logo {
+    width: 24px;
+    height: 24px;
+}
