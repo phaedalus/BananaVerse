@@ -1,0 +1,24 @@
+{
+  "name": "BananaVerse",
+  "short_name": "BananaVerse",
+  "description": "A comprehensive character database.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#3981e6",
+  "icons": [
+    {
+      "src": "appIcons/logo-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "appIcons/logo-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
