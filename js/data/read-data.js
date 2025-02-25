@@ -37,7 +37,12 @@ function readCharacterData(characters) {
             dead: character.dead,
             dateofdeath: character.dateofdeath,
             alias: character.alias,
-            retired: character.retired
+            retired: character.retired,
+            hometown: character.hometown,
+            branch: character.branch,
+            unit: character.unit,
+            unitnumber: character.unitnumber,
+            yearsserved: character.yearsserved
         };
     });
 }

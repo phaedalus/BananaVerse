@@ -32,10 +32,6 @@ body {
     color: #3981e6;
 }
 
-.profile {
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
 #genderSelect {
     appearance: none;
     -webkit-appearance: none;

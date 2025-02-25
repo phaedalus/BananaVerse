@@ -3,6 +3,36 @@
     src: url('../font/Raleway-Regular.ttf');
 }
 
+@font-face {
+    font-family: MSD;
+    src: url('../font/msd.ttf');
+}
+
+@font-face {
+    font-family: RDR;
+    src: url('../font/rdr.ttf');
+}
+
+@font-face {
+    font-family: ACU;
+    src: url('../font/assassin.ttf');
+}
+
+@font-face {
+    font-family: CIA;
+    src: url('../font/GT-America-Mono-Regular-72bfafe2cef91603f08edde5514a0afb.woff2');
+}
+
+@font-face {
+    font-family: GTA;
+    src: url('../font/pricedow.otf');
+}
+
+@font-face {
+    font-family: EURO;
+    src: url('../font/eurostile.ttf');
+}
+
 body {
     margin: 0;
     display: flex;
