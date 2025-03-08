@@ -168,7 +168,7 @@ function relationship(character) {
     } else if (character.relationshipstatus == "In a relationship") {
         if (character.playerrelation) {
             if (character.playerrelated) {
-                return `In a relationship with ${playerrelated}`;
+                return `In a relationship with ${character.playerrelated}`;
             } else {
                 return 'Null';
             }
@@ -178,7 +178,7 @@ function relationship(character) {
     } else if (character.relationshipstatus == "Engaged") {
         if (character.playerrelation) {
             if (character.playerrelated) {
-                return `Engaged to ${playerrelated}`;
+                return `Engaged to ${character.playerrelated}`;
             } else {
                 return 'Null';
             }
@@ -188,7 +188,7 @@ function relationship(character) {
     } else if (character.relationshipstatus == "Married") {
         if (character.playerrelation) {
             if (character.playerrelated) {
-                return `Married to ${playerrelated}`;
+                return `Married to ${character.playerrelated}`;
             } else {
                 return 'Null';
             }
