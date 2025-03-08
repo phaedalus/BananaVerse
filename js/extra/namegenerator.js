@@ -28,8 +28,13 @@ async function generateName(gender) {
 async function generateAndDisplayName() {
     const genderSelect = document.getElementById('genderSelect');
     const gender = genderSelect.options[genderSelect.selectedIndex].value;
+    const loadingSpinner = document.getElementById('loadingSpinner');
+
+    loadingSpinner.style.display = 'block';
 
     const nameParts = await generateName(gender);
+
+    loadingSpinner.style.display = 'none';
 
     document.getElementById('firstName').textContent = nameParts.firstName;
     document.getElementById('middleName').textContent = nameParts.middleName;
@@ -63,6 +68,7 @@ function namegenerator() {
                     <option value="female">Female</option>
                 </select><br>
                 <button id="generateBtn">Generate New Name</button>
+                <div id="loadingSpinner" class="spinner" style="display: none;"></div>
                 <div>
                     <h1 id="fullName">
                         <span id="firstName" class="name-part" contenteditable="true"></span>

@@ -42,7 +42,10 @@ function readCharacterData(characters) {
             branch: character.branch,
             unit: character.unit,
             unitnumber: character.unitnumber,
-            yearsserved: character.yearsserved
+            yearsserved: character.yearsserved,
+            relationshipstatus: character.relationshipstatus,
+            playerrelation: character.playerrelation,
+            playerrelated: character.playerrelated
         };
     });
 }
@@ -51,7 +54,6 @@ function sortCharactersByGame(characters) {
     const sortedData = {};
 
     characters.forEach(character => {
-        // Ensure the character is valid
         if (!character || !character.game) {
             console.warn('Skipping invalid character data:', character);
             return;

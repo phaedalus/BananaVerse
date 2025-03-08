@@ -109,3 +109,7 @@ body {
     background: #dbd9d3;
     color: #333;
 }
+
+.spinner {
+    border-left-color: #000000;
+}
