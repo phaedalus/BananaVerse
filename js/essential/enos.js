@@ -2,7 +2,7 @@
     class ENOSDebugger {
         constructor(options = {}) {
             this.options = Object.assign({
-                position: 'bottom-right', // 'top-left', 'top-right', 'bottom-left', 'bottom-right'
+                position: 'bottom-right',
                 backgroundColor: 'rgba(255, 0, 0, 0.8)',
                 textColor: 'white',
                 fontSize: '14px',

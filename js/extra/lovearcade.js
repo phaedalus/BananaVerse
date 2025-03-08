@@ -11,7 +11,6 @@ function generateRandomCharacter(sortedCharacters) {
     let character1Index = Math.floor(Math.random() * aliveCharacters.length);
     let character2Index = Math.floor(Math.random() * aliveCharacters.length);
 
-    // Ensure both selected characters are different
     while (character1Index === character2Index) {
         character2Index = Math.floor(Math.random() * aliveCharacters.length);
     }

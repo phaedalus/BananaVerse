@@ -17,7 +17,7 @@ function Id(character) {
                 <span style="color: #243970; font-size: 24px; font-weight: bold;">San Andreas</span>
                 <sup style="color: #243970; font-size: 12px; font-weight: bold;">USA</sup>
                 <sup style="color: #1A5480; font-weight: bold; margin-left: 45px;">DRIVER LICENSE</sup>
-                <img src="https://www.dmv.ca.gov/portal/uploads/2023/02/Golden_bear.png" style="width: 45px; height: 27px;">
+                <img src="../imgs/gb.png" style="width: 45px; height: 27px;">
                 <hr style="border: 1.4px solid #D4B337; width: 95%; margin-left: 15px; margin-bottom: 1.9px;">
                 <hr style="border: 1.4px solid #D4B337; width: 63%; margin-left: 134px; margin-right: 0px;">
                 ${handleNick(character)}
@@ -31,6 +31,7 @@ function Id(character) {
                 <span style="color: #1A5480; position: absolute; left: 70%; font-size: 12px;"><b>HAIR <b> <span style="color: black; font-size: 13px;">${shortenColor(character.hair)}</span></span>
                 <span style="color: #1A5480; position: absolute; left: 70%; top: 43.5%; font-size: 12px;"><b>EYES <b> <span style="color: black; font-size: 13px;">${shortenColor(character.eye)}</span></span>
                 ${employment(character)}
+                ${rel(relationship(character), character)}
                 <span style="color: #1A5480; position: absolute; right: 2%; bottom: 2%; font-size: 18px;"><b>${character.playedby}<b></span>
                 <img src="${genderPFP(character)}" style="width: 124px; position: absolute; top: 30%;">
                 <br><br><br><br><br><br>
@@ -44,6 +45,7 @@ function Id(character) {
                 <span style="color: black; font-family: RDR; font-size: 32px;">We be wanting, ${character.fullname}<br> for being a ${character.employment}</span><br>
                 ${redGen(character)}<br>
                 <span style="color: black; font-family: RDR; font-size: 20px;">They have ${character.hair}ish colored hair and ${character.eye}ish eyes.</span><br>
+                <span style="color: black; font-family: RDR; font-size: 20px;">Known Relations ${relationship(character)}</span><br>
                 <span style="color: black; font-family: RDR; font-size: 20px;">They were born about ${formatDate(character.birthday)}, in the town of ${character.hometown}.</span><br>
                 <span style="color: black; font-family: RDR; font-size: 26px;">Bounty Worth is ${character.networth}</span><br>
                 <span style="color: black; font-family: RDR; font-size: 20px;">Farewell, Sherif ${character.playedby}</span>
@@ -62,6 +64,7 @@ function Id(character) {
                     <li>Height - ${character.height}</li>
                     <li>Eye Color - ${character.eye}</li>
                     <li>Hair Color - ${character.hair}</li>
+                    <li>Known Relation - ${relationship(character)}</li>
                 </ul>
             </center>
         `
@@ -79,7 +82,7 @@ function Id(character) {
         } else {
             if (character.employment === "U.S. Military") {
                 return `
-                    <center><img src="https://static1.squarespace.com/static/5114787ee4b0807f570d7372/t/5e45d1e02953433a2a1e0ee2/1581634018172/CIA+Logo.png?format=1500w" style="width: 60px; height: 60px;"></center>
+                    <center><img src="../imgs/cia.png" style="width: 60px; height: 60px;"></center>
                     <center><span style="font-family: CIA; color: black; margin-bottom: 4px;">Central Intellegence Agency</span></center><br>
                     <div style="display: grid; grid-template-columns: repeat(2, 1fr);">
                         <div style="font-family: CIA; color: black; border: 1px solid black; padding: 5px;">
@@ -150,11 +153,15 @@ function Id(character) {
                             <span>Years Served</span><br>
                             <span style="color: darkred; border: 2px solid darkred;">${character.yearsserved}</span>
                         </div>
+                        <div style="font-family: CIA; color: black; border: 1px solid black; padding: 5px;">
+                            <span>Relationship Status</span><br>
+                            <span style="color: darkred; border: 2px solid darkred;">${relationship(character)}</span>
+                        </div>
                     </div>
                 `
             } else {
                 return `
-                    <img src="https://www.ghostrecon.net/forums/uploads/monthly_2019_05/skell-technology.png.e584961bdb49d8c88721f409afc5454b.png" style="width: 250px; height: 55px;">
+                    <img src="../imgs/skell.png" style="width: 250px; height: 55px;">
                     <hr style="border: 1.4px solidrgb(27, 27, 27);">
                     ${alias(character)}
                     <span style="color: black"><b>${character.employment}</b> - Est Worth ${character.networth}</span><br>
@@ -163,6 +170,7 @@ function Id(character) {
                     <span style="color: black"><b>Hair Color</b> - ${character.hair.toUpperCase()}</span><br>
                     <span style="color: black"><b>Eye Color</b> - ${character.eye.toUpperCase()}</span><br>
                     <span style="color: black"><b>Assigned To</b> - ${character.playedby}</span><br>
+                    <span style="color: black"><b>Relationship</b> - ${relationship(character)}</span><br>
                     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 `;
             }

@@ -55,21 +55,33 @@ function filterCharacters(gameAbr) {
         let items = list.getElementsByTagName("li");
 
         for (let item of items) {
-            let text = (item.dataset.fullname || "").toLowerCase();
+            let fullname = (item.dataset.fullname || "").toLowerCase();
             let gender = (item.dataset.gender || "").toLowerCase();
             let playedby = (item.dataset.playedby || "").toLowerCase();
             let employment = (item.dataset.employment || "").toLowerCase();
             let alias = (item.dataset.alias || "").toLowerCase();
+            let retired = item.innerHTML.includes('fa-umbrella-beach');
 
-            let matches = text.includes(query) || 
+            let matches = fullname.includes(query) || 
                           gender.includes(query) || 
                           playedby.includes(query) ||
                           employment.includes(query) ||
-                          alias.includes(query);
+                          alias.includes(query) ||
+                          (retired && query.includes("retired"));
 
             if (matches) {
-                let highlightedText = item.dataset.fullname.replace(new RegExp(query, "gi"), (match) => `<b>${match}</b>`);
-                item.innerHTML = highlightedText;
+                let highlightedName = item.dataset.fullname.replace(new RegExp(query, "gi"), (match) => `<b>${match}</b>`);
+                let highlightedAlias = item.dataset.alias.replace(new RegExp(query, "gi"), (match) => `<b>${match}</b>`);
+                
+                let nameText = item.dataset.alias 
+                    ? `${highlightedName} (${highlightedAlias})` 
+                    : highlightedName;
+
+                if (retired) {
+                    nameText += ' <i class="fa-solid fa-umbrella-beach"></i>';
+                }
+
+                item.innerHTML = nameText;
                 item.style.display = "";
             } else {
                 item.style.display = "none";

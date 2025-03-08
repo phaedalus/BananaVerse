@@ -161,3 +161,55 @@ function employmentDeath(character) {
         return `${character.employment}`;
     }
 }
+
+function relationship(character) {
+    if (character.relationshipstatus == "Single") {
+        return `Single`;
+    } else if (character.relationshipstatus == "In a relationship") {
+        if (character.playerrelation) {
+            if (character.playerrelated) {
+                return `In a relationship with ${playerrelated}`;
+            } else {
+                return 'Null';
+            }
+        } else {
+            return 'In a relationship';
+        }
+    } else if (character.relationshipstatus == "Engaged") {
+        if (character.playerrelation) {
+            if (character.playerrelated) {
+                return `Engaged to ${playerrelated}`;
+            } else {
+                return 'Null';
+            }
+        } else {
+            return 'Engaged';
+        }
+    } else if (character.relationshipstatus == "Married") {
+        if (character.playerrelation) {
+            if (character.playerrelated) {
+                return `Married to ${playerrelated}`;
+            } else {
+                return 'Null';
+            }
+        } else {
+            return 'Married';
+        }
+    } else if (character.relationshipstatus == "Divorced") {
+        return 'Divorced';
+    } else if (character.relationship == "Widowed") {
+        return 'Widowed';
+    } else if (character.relationshipstatus == "It's complicated") {
+        return "It's complicated";
+    } else {
+        return "Prefer not to say";
+    }
+}
+
+function rel(relationship, character) {
+    if (character.employment.length > 15 && (character.game === "GTA" || character.game === "GTA5P5")) {
+        return `<span style="color: #1A5480; position: absolute; left: 70%; top: 69.4%; font-size: 12px;"><b>RELATION </b> <span style="color: black; font-size: 13px;">${relationship}</span></span>`;
+    } else if (character.game === "GTA" || character.game === "GTA5P5") {
+        return `<span style="color: #1A5480; position: absolute; left: 70%; top: 62.9%; font-size: 12px;"><b>RELATION </b> <span style="color: black; font-size: 13px;">${relationship}</span></span>`;
+    }
+}
